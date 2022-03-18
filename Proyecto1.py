@@ -34,9 +34,11 @@ def eliminar():
 def modificar():
     try:
         elemento=int(input("Ingrese el ID del elemento que desea modificar: "))
-        estudianteT = Estudiantes(input("Nombre:"),int(input("Edad:")),input("Genero:"),float(input("Promedio:")))
-        lista_estudiantes[elemento-1]=estudianteT
         Estudiantes.contadorEstudiantes=elemento
+        estudianteT = Estudiantes(input("Nombre:"),int(input("Edad:")),input("Genero:"),float(input("Promedio:")))
+        
+        lista_estudiantes[elemento-1]=estudianteT
+        
         
     except IndexError:
         print("\n\nNo existe registro con el ID ingresado\n\n")
