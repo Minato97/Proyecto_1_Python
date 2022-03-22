@@ -84,7 +84,7 @@ def ordenar():
 def buscar():
     try:
         print("\n**********Menú de Búsqueda*********")
-        print("Presione el número correspondiente según el método de búsqueda que desea implementar:\n\n1. Búsquea secuencial con centinela.\n2. Búsqueda binaria.\n3. Regresar al menú principal.\n")
+        print("Presione el número correspondiente según el método de búsqueda que desea implementar:\n\n1. Búsqueda secuencial con centinela.\n2. Búsqueda binaria.\n3. Regresar al menú principal.\n")
         opcion=int(input("Por favor ingrese una opción:"))
 
         if opcion==1:
@@ -138,8 +138,8 @@ def burbuja():
                                 bucket = lista_estudiantes[j]
                                 lista_estudiantes[j] = lista_estudiantes[j+1]
                                 lista_estudiantes[j+1] = bucket
-                        j+= 1
-                    i+= 1
+                            j+= 1
+                        i+= 1
                     mostrar()
                             
                 
