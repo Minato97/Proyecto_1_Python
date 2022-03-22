@@ -10,7 +10,7 @@ personajes.append(p)
 p = { "Nombre":"homero","Numero":7}
 personajes.append(p)
 #print(personajes)
-def burbuja(lista):
+def burbuja(lista,key):
     tamano = len(lista)
     print(tamano)
     i= 0
@@ -18,7 +18,7 @@ def burbuja(lista):
         j= 0
         
         while j < (tamano-1):
-            if lista[j+1]["Numero"] > lista[j]["Numero"]:
+            if lista[j+1][key] > lista[j][key]:
                 bucket = lista[j]
                 lista[j] = lista[j+1]
                 lista[j+1] = bucket
@@ -27,6 +27,6 @@ def burbuja(lista):
     return lista
 
 
-print(burbuja(personajes))
+print(burbuja(personajes,"Numero"))
 
 print(personajes[0]["Numero"])
