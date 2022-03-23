@@ -30,3 +30,6 @@ def burbuja(lista):
 print(burbuja(personajes))
 
 print(personajes[0]["Numero"])
+
+
+print("puto")
