@@ -123,7 +123,68 @@ def burbuja_d(lista, key):
     system("cls")
     menu()
     
+#Selección ascendente
+def seleccion_a(lista, key):
+    n = len(lista)
+    for i in range(0, n):
+        posicion = i
+        for j in range(0, n):
+            if lista[j][key] > lista[posicion][key]:
+                posicion = j
+                temp = lista[i]
+                lista[i] = lista[posicion]
+                lista[posicion] = temp
+    mostrar()
+    system("pause")
+    system("cls")
+    menu()
+
+#Selección descendente
+def seleccion_d(lista, key):
+    n = len(lista)
+    for i in range(0, n):
+        posicion = i
+        for j in range(0, n):
+            if lista[j][key] < lista[posicion][key]:
+                posicion = j
+                temp = lista[i]
+                lista[i] = lista[posicion]
+                lista[posicion] = temp
+    mostrar()
+    system("pause")
+    system("cls")
+    menu()
     
+#Incersión ascendente
+def insercion_a(lista,key):
+    tam= len(lista)
+    for i in range(1, tam):
+        cvalue = lista[i]
+        posicion = i
+        while posicion > 0 and lista[posicion-1][key] > lista[i][key]:
+            lista[posicion] = lista[posicion-1]
+            posicion-= 1
+        lista[posicion] = cvalue
+    mostrar()
+    system("pause")
+    system("cls")
+    menu()
+
+
+#Incersión descendente
+def insercion_d(lista,key):
+    tam= len(lista)
+    for i in range(1, tam):
+        cvalue = lista[i]
+        posicion = i
+        while posicion > 0 and lista[posicion-1][key] < lista[i][key]:
+            lista[posicion] = lista[posicion-1]
+            posicion-= 1
+        lista[posicion] = cvalue
+    mostrar()
+    system("pause")
+    system("cls")
+    menu()
 
 # Declaración de menú de busqueda
 def buscar():
@@ -248,9 +309,9 @@ def seleccion():
                 opcion = int(input("Por favor ingrese una opción:"))
 
                 if opcion == 1:  # Selección por promedio ascendente
-                    pass
+                    print(seleccion_a(lista_estudiantes,"Promedio"))
                 elif opcion == 2:  # Selección por promedio descendente
-                    pass
+                    print(seleccion_d(lista_estudiantes,"Promedio"))
                 else:
                     print("\n\nOpción inválida\n\n")
                     seleccion()
@@ -267,9 +328,9 @@ def seleccion():
                 opcion = int(input("Por favor ingrese una opción:"))
 
                 if opcion == 1:  # Selección por edad ascendente
-                    pass
+                    print(seleccion_a(lista_estudiantes,"Edad"))
                 elif opcion == 2:  # Selección por edad descendente
-                    pass
+                    print(seleccion_d(lista_estudiantes,"Edad"))
                 else:
                     print("\n\nOpción inválida\n\n")
                     seleccion()
@@ -286,9 +347,9 @@ def seleccion():
                 opcion = int(input("Por favor ingrese una opción:"))
 
                 if opcion == 1:  # Selección por ID ascendente
-                    pass
+                    print(seleccion_a(lista_estudiantes,"Id"))
                 elif opcion == 2:  # Selección por ID descendente
-                    pass
+                    print(seleccion_d(lista_estudiantes,"Id"))
                 else:
                     print("\n\nOpción inválida\n\n")
                     seleccion()
@@ -320,9 +381,9 @@ def insercion():
                 opcion = int(input("Por favor ingrese una opción:"))
 
                 if opcion == 1:  # insercion por promedio ascendente
-                    pass
+                    print(insercion_a(lista_estudiantes,"Promedio"))
                 elif opcion == 2:  # insercion por promedio descendente
-                    pass
+                    print(insercion_d(lista_estudiantes,"Promedio"))
                 else:
                     print("\n\nOpción inválida\n\n")
                     insercion()
@@ -339,9 +400,9 @@ def insercion():
                 opcion = int(input("Por favor ingrese una opción:"))
 
                 if opcion == 1:  # insercion por edad ascendente
-                    pass
+                    print(insercion_a(lista_estudiantes,"Edad"))
                 elif opcion == 2:  # insercion por edad descendente
-                    pass
+                    print(insercion_d(lista_estudiantes,"Edad"))
                 else:
                     print("\n\nOpción inválida\n\n")
                     insercion()
@@ -358,9 +419,9 @@ def insercion():
                 opcion = int(input("Por favor ingrese una opción:"))
 
                 if opcion == 1:  # insercion por ID ascendente
-                    pass
+                    print(insercion_a(lista_estudiantes,"Id"))
                 elif opcion == 2:  # insercion por ID descendente
-                    pass
+                    print(insercion_d(lista_estudiantes,"Id"))
                 else:
                     print("\n\nOpción inválida\n\n")
                     insercion()
@@ -778,6 +839,7 @@ def menu():
         elif opcion == 4:
             print("\nLos registros actuales son:\n")
             mostrar()
+            system("pause")
             menu()
         elif opcion == 5:
             ordenar()
