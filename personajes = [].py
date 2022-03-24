@@ -10,32 +10,28 @@ personajes.append(p)
 p = { "Nombre":"homero","Numero":7}
 personajes.append(p)
 #print(personajes)
-def conteo(a):
-    n= len(a)
-    maximo=0
-    for y in range(0, n):
-        if a[y]["Numero"] > maximo:
-            maximo = a[y]["Numero"]
-    
-    c_arr = []
-    for j in range(0, maximo + 1):
-        p= { "Nombre":"","Numero":0}
-        c_arr.append(p)
-    print(c_arr)
-    for i in range (0, n):
-        c_arr[a[i]]["Numero"] = c_arr[a[i]]["Numero"] + 1
-    i = maximo
-    j = 0
-    while i > 0:
-        if c_arr[i]["Numero"] > 0:
-            a[j] = i
-            j+= 1
-            c_arr[i] = c_arr[i] - 1
-        else:
-            i-= 1
-    return a
+def particionado(lista):
 
-print(conteo(personajes))
+    menores = []
+    mayores = []
+    pivote = lista[0]
+    for i in range(1,len(lista)):
+        if lista[i]["Numero"] < pivote["Numero"]:
+            menores.append(lista[i])
+        else:
+            mayores.append(lista[i])
+    return menores,pivote,mayores
+
+def quicksort(lista):
+    if len(lista) < 2 :
+        return lista
+    else:
+        menores,pivote,mayores = particionado(lista)
+        lista=quicksort(menores) + [pivote] + quicksort(mayores)
+        return lista
+
+
+print(quicksort(personajes))
 
 
 

@@ -1,5 +1,5 @@
 from os import system
-import sys
+import pprint
 lista_estudiantes = list()
 estudiante = {}
 Id = 0
@@ -186,6 +186,40 @@ def insercion_d(lista,key):
     system("cls")
     menu()
 
+#Función de apoyo para quicksort
+def particionado(lista,key):
+    menores = []
+    mayores = []
+    pivote = lista[0]
+    for i in range(1,len(lista)):
+        if lista[i][key] < pivote[key]:
+            menores.append(lista[i])
+        else:
+            mayores.append(lista[i])
+    return menores,pivote,mayores
+
+#Quicksort ascendente
+def quicksort_a(lista,key):
+    if len(lista) < 2 :
+        return lista
+    else:
+        menores,pivote,mayores = particionado(lista,key)
+        menores= quicksort_a(menores,key) 
+        mayores= quicksort_a(mayores,key)
+        lista=menores + [pivote] + mayores
+        return lista
+
+#Quicksort decreciente
+def quicksort_d(lista,key):
+    if len(lista) < 2 :
+        return lista
+    else:
+        menores,pivote,mayores = particionado(lista,key)
+        lista=quicksort_d(mayores,key) + [pivote] + quicksort_d(menores,key)
+        return lista
+
+
+    
 # Declaración de menú de busqueda
 def buscar():
     try:
@@ -195,8 +229,7 @@ def buscar():
 
         if opcion == 1:
             try:
-                num = int(
-                    input("\nIngrese el ID del elemento que desea buscar: "))
+                num = int(input("\nIngrese el ID del elemento que desea buscar: "))
                 busquedaSecuencial(num)
                 system("pause")
                 buscar()
@@ -256,9 +289,9 @@ def burbuja():
                 opcion = int(input("Por favor ingrese una opción:"))
 
                 if opcion == 1:  # Burbuja por edad ascendente
-                    print(burbuja_a(lista_estudiantes, "Edad"))
+                    burbuja_a(lista_estudiantes, "Edad")
                 elif opcion == 2:  # Burbuja por edad descendente
-                    print(burbuja_d(lista_estudiantes, "Edad"))
+                    burbuja_d(lista_estudiantes, "Edad")
                 else:
                     print("\n\nOpción inválida\n\n")
                     burbuja()
@@ -275,9 +308,9 @@ def burbuja():
                 opcion = int(input("Por favor ingrese una opción:"))
 
                 if opcion == 1:  # Burbuja por ID ascendente
-                    print(burbuja_a(lista_estudiantes, "Id"))
+                    burbuja_a(lista_estudiantes, "Id")
                 elif opcion == 2:  # Burbuja por ID descendente
-                    print(burbuja_d(lista_estudiantes, "Id"))
+                    burbuja_d(lista_estudiantes, "Id")
                 else:
                     print("\n\nOpción inválida\n\n")
                     burbuja()
@@ -309,9 +342,9 @@ def seleccion():
                 opcion = int(input("Por favor ingrese una opción:"))
 
                 if opcion == 1:  # Selección por promedio ascendente
-                    print(seleccion_a(lista_estudiantes,"Promedio"))
+                    seleccion_a(lista_estudiantes,"Promedio")
                 elif opcion == 2:  # Selección por promedio descendente
-                    print(seleccion_d(lista_estudiantes,"Promedio"))
+                    seleccion_d(lista_estudiantes,"Promedio")
                 else:
                     print("\n\nOpción inválida\n\n")
                     seleccion()
@@ -328,9 +361,9 @@ def seleccion():
                 opcion = int(input("Por favor ingrese una opción:"))
 
                 if opcion == 1:  # Selección por edad ascendente
-                    print(seleccion_a(lista_estudiantes,"Edad"))
+                    seleccion_a(lista_estudiantes,"Edad")
                 elif opcion == 2:  # Selección por edad descendente
-                    print(seleccion_d(lista_estudiantes,"Edad"))
+                    seleccion_d(lista_estudiantes,"Edad")
                 else:
                     print("\n\nOpción inválida\n\n")
                     seleccion()
@@ -347,9 +380,9 @@ def seleccion():
                 opcion = int(input("Por favor ingrese una opción:"))
 
                 if opcion == 1:  # Selección por ID ascendente
-                    print(seleccion_a(lista_estudiantes,"Id"))
+                    seleccion_a(lista_estudiantes,"Id")
                 elif opcion == 2:  # Selección por ID descendente
-                    print(seleccion_d(lista_estudiantes,"Id"))
+                    seleccion_d(lista_estudiantes,"Id")
                 else:
                     print("\n\nOpción inválida\n\n")
                     seleccion()
@@ -381,9 +414,9 @@ def insercion():
                 opcion = int(input("Por favor ingrese una opción:"))
 
                 if opcion == 1:  # insercion por promedio ascendente
-                    print(insercion_a(lista_estudiantes,"Promedio"))
+                    insercion_a(lista_estudiantes,"Promedio")
                 elif opcion == 2:  # insercion por promedio descendente
-                    print(insercion_d(lista_estudiantes,"Promedio"))
+                    insercion_d(lista_estudiantes,"Promedio")
                 else:
                     print("\n\nOpción inválida\n\n")
                     insercion()
@@ -400,9 +433,9 @@ def insercion():
                 opcion = int(input("Por favor ingrese una opción:"))
 
                 if opcion == 1:  # insercion por edad ascendente
-                    print(insercion_a(lista_estudiantes,"Edad"))
+                    insercion_a(lista_estudiantes,"Edad")
                 elif opcion == 2:  # insercion por edad descendente
-                    print(insercion_d(lista_estudiantes,"Edad"))
+                    insercion_d(lista_estudiantes,"Edad")
                 else:
                     print("\n\nOpción inválida\n\n")
                     insercion()
@@ -419,9 +452,9 @@ def insercion():
                 opcion = int(input("Por favor ingrese una opción:"))
 
                 if opcion == 1:  # insercion por ID ascendente
-                    print(insercion_a(lista_estudiantes,"Id"))
+                    insercion_a(lista_estudiantes,"Id")
                 elif opcion == 2:  # insercion por ID descendente
-                    print(insercion_d(lista_estudiantes,"Id"))
+                    insercion_d(lista_estudiantes,"Id")
                 else:
                     print("\n\nOpción inválida\n\n")
                     insercion()
@@ -453,9 +486,17 @@ def quicksort():
                 opcion = int(input("Por favor ingrese una opción:"))
 
                 if opcion == 1:  # quicksort por promedio ascendente
-                    pass
+                    print(quicksort_a(lista_estudiantes,"Promedio"))
+    
+                    system("pause")
+                    system("cls")
+                    menu()
                 elif opcion == 2:  # quicksort por promedio descendente
-                    pass
+                    print(quicksort_d(lista_estudiantes,"Promedio"))
+                    
+                    system("pause")
+                    system("cls")
+                    menu()
                 else:
                     print("\n\nOpción inválida\n\n")
                     quicksort()
@@ -472,9 +513,17 @@ def quicksort():
                 opcion = int(input("Por favor ingrese una opción:"))
 
                 if opcion == 1:  # quicksort por edad ascendente
-                    pass
+                    print(quicksort_a(lista_estudiantes,"Edad"))
+                    
+                    system("pause")
+                    system("cls")
+                    menu()
                 elif opcion == 2:  # quicksort por edad descendente
-                    pass
+                    print(quicksort_d(lista_estudiantes,"Edad"))
+                    
+                    system("pause")
+                    system("cls")
+                    menu()
                 else:
                     print("\n\nOpción inválida\n\n")
                     quicksort()
@@ -491,9 +540,17 @@ def quicksort():
                 opcion = int(input("Por favor ingrese una opción:"))
 
                 if opcion == 1:  # quicksort por ID ascendente
-                    pass
+                    print(quicksort_a(lista_estudiantes,"Id"))
+                    
+                    system("pause")
+                    system("cls")
+                    menu()
                 elif opcion == 2:  # quicksort por ID descendente
-                    pass
+                    pprint.pprint(quicksort_d(lista_estudiantes,"Id"))
+                    
+                    system("pause")
+                    system("cls")
+                    menu()
                 else:
                     print("\n\nOpción inválida\n\n")
                     quicksort()
