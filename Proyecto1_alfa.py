@@ -12,7 +12,7 @@ def crear():
     estudiante["Nombre"] = input("Nombre: ")
     estudiante["Edad"] = int(input("Edad: "))
     estudiante["Genero"] = input("Genero: ")
-    estudiante["Promedio"] = float(input("Promedio: "))
+    estudiante["Promedio"] = int(input("Promedio: "))
     Id += 1
     estudiante["Id"] = Id
 
@@ -218,9 +218,154 @@ def quicksort_d(lista,key):
         lista=quicksort_d(mayores,key) + [pivote] + quicksort_d(menores,key)
         return lista
 
+#Shellsort creciente
+def shellsort_a(lista,key):
+    n = len(lista)
+    #print(n)
+    for i in range(1, n):
+        valor = lista[i] #toma el siguiente valor a ser isnertado
+        #print("valor", nums[i])
+        posicion = i # indice  donde se insertará el vavlor
+        #print("posicion", posicion)
 
+        while posicion > 0 and lista[posicion -1][key] > valor[key]: #si la posicion es mayor a 0 Y los numeros en la posicion[posicion - 1] es mayor a el valor
+            lista[posicion] = lista[posicion -1] # numeros[posicion] = numeros[posicion - 1]
+            #print("valor cambiado", nums[posicion])
+            posicion -= 1 # posicion decrementa en 1
+            lista[posicion] = valor # numeros[posicion] = valor
+    mostrar()
+    system("pause")
+    system("cls")
+    menu()
     
-# Declaración de menú de busqueda
+#Shellsort decreciente
+def shellsort_d(lista,key):
+    n = len(lista)
+    #print(n)
+    for i in range(1, n):
+        valor = lista[i] #toma el siguiente valor a ser isnertado
+        #print("valor", nums[i])
+        posicion = i # indice  donde se insertará el vavlor
+        #print("posicion", posicion)
+
+        while posicion > 0 and lista[posicion -1][key] < valor[key]: #si la posicion es mayor a 0 Y los numeros en la posicion[posicion - 1] es mayor a el valor
+            lista[posicion] = lista[posicion -1] # numeros[posicion] = numeros[posicion - 1]
+            #print("valor cambiado", nums[posicion])
+            posicion -= 1 # posicion decrementa en 1
+            lista[posicion] = valor # numeros[posicion] = valor
+    mostrar()
+    system("pause")
+    system("cls")
+    menu()
+    
+#Mergesort Ascendente
+def mergesort_a(lista,key):
+    if len(lista) > 1:
+        mitad = len(lista) // 2
+        primera_mitad = lista[:mitad]
+        segunda_mitad = lista[mitad:]
+
+        mergesort_a(primera_mitad,key)
+        mergesort_a(segunda_mitad,key)
+        i = 0
+        j = 0
+        k = 0
+
+        while i < len(primera_mitad) and j < len(segunda_mitad):
+            if primera_mitad[i][key] < segunda_mitad[j][key]:
+                lista[k] = primera_mitad[i]
+                i+= 1
+            else:
+                lista[k] = segunda_mitad[j]
+                j += 1
+            k+= 1
+        while i < len(primera_mitad):
+            lista[k] = primera_mitad[i]
+            i+=1
+            k+=1
+        while j < len(segunda_mitad):
+            lista[k] = segunda_mitad[j]
+            j+=1
+            k+=1
+        return lista
+#Mergesort Descendente
+def mergesort_d(lista,key):
+    if len(lista) > 1:
+        mitad = len(lista) // 2
+        primera_mitad = lista[:mitad]
+        segunda_mitad = lista[mitad:]
+
+        mergesort_d(primera_mitad,key)
+        mergesort_d(segunda_mitad,key)
+        i = 0
+        j = 0
+        k = 0
+
+        while i < len(primera_mitad) and j < len(segunda_mitad):
+            if primera_mitad[i][key] > segunda_mitad[j][key]:
+                lista[k] = primera_mitad[i]
+                i+= 1
+            else:
+                lista[k] = segunda_mitad[j]
+                j += 1
+            k+= 1
+        while i < len(primera_mitad):
+            lista[k] = primera_mitad[i]
+            i+=1
+            k+=1
+        while j < len(segunda_mitad):
+            lista[k] = segunda_mitad[j]
+            j+=1
+            k+=1
+        return lista
+    
+#Función de apoyo para radixsort
+def countingSortForRadix(lista, placeValue,key):
+    countArray = [0] * 10
+    tamano = len(lista)
+    
+    for i in range(tamano): 
+        placeElement = (lista[i][key] // placeValue) % 10
+        countArray[placeElement] += 1
+
+    for i in range(1, 10):
+        countArray[i] += countArray[i-1]
+
+    nueva_lista = [0] * tamano
+    i = tamano - 1
+    while i >= 0:
+        currentEl = lista[i]
+        placeElement = (lista[i][key] // placeValue) % 10
+        countArray[placeElement] -= 1
+        newPosition = countArray[placeElement]
+        nueva_lista[newPosition] = currentEl
+        i -= 1
+        
+    return nueva_lista
+
+#Rdixsort ascendente
+def radixSort_a(lista,key):
+    
+    maximo=0
+    for elemento in lista:
+        if elemento[key] > maximo:
+            maximo = elemento[key]
+    D = 1
+    while maximo > 0:
+        maximo /= 10
+        D += 1
+    
+    placeVal = 1
+
+    nueva_lista = lista
+    while D > 0:
+        nueva_lista = countingSortForRadix(nueva_lista, placeVal,key)
+        placeVal *= 10  
+        D -= 1
+
+    return nueva_lista
+
+#Declaración de menú de busqueda
 def buscar():
     try:
         print("\n**********Menú de Búsqueda*********")
@@ -486,13 +631,13 @@ def quicksort():
                 opcion = int(input("Por favor ingrese una opción:"))
 
                 if opcion == 1:  # quicksort por promedio ascendente
-                    print(quicksort_a(lista_estudiantes,"Promedio"))
+                    pprint.pprint(quicksort_a(lista_estudiantes,"Promedio"))
     
                     system("pause")
                     system("cls")
                     menu()
                 elif opcion == 2:  # quicksort por promedio descendente
-                    print(quicksort_d(lista_estudiantes,"Promedio"))
+                    pprint.pprint(quicksort_d(lista_estudiantes,"Promedio"))
                     
                     system("pause")
                     system("cls")
@@ -513,13 +658,13 @@ def quicksort():
                 opcion = int(input("Por favor ingrese una opción:"))
 
                 if opcion == 1:  # quicksort por edad ascendente
-                    print(quicksort_a(lista_estudiantes,"Edad"))
+                    pprint.pprint(quicksort_a(lista_estudiantes,"Edad"))
                     
                     system("pause")
                     system("cls")
                     menu()
                 elif opcion == 2:  # quicksort por edad descendente
-                    print(quicksort_d(lista_estudiantes,"Edad"))
+                    pprint.pprint(quicksort_d(lista_estudiantes,"Edad"))
                     
                     system("pause")
                     system("cls")
@@ -540,7 +685,7 @@ def quicksort():
                 opcion = int(input("Por favor ingrese una opción:"))
 
                 if opcion == 1:  # quicksort por ID ascendente
-                    print(quicksort_a(lista_estudiantes,"Id"))
+                    pprint.pprint(quicksort_a(lista_estudiantes,"Id"))
                     
                     system("pause")
                     system("cls")
@@ -582,9 +727,17 @@ def mergesort():
                 opcion = int(input("Por favor ingrese una opción:"))
 
                 if opcion == 1:  # mergesort por promedio ascendente
-                    pass
+                    pprint.pprint(mergesort_a(lista_estudiantes,"Promedio"))
+                    
+                    system("pause")
+                    system("cls")
+                    menu()
                 elif opcion == 2:  # mergesort por promedio descendente
-                    pass
+                    pprint.pprint(mergesort_d(lista_estudiantes,"Promedio"))
+                    
+                    system("pause")
+                    system("cls")
+                    menu()
                 else:
                     print("\n\nOpción inválida\n\n")
                     mergesort()
@@ -601,9 +754,17 @@ def mergesort():
                 opcion = int(input("Por favor ingrese una opción:"))
 
                 if opcion == 1:  # mergesort por edad ascendente
-                    pass
+                    pprint.pprint(mergesort_a(lista_estudiantes,"Edad"))
+                    
+                    system("pause")
+                    system("cls")
+                    menu()
                 elif opcion == 2:  # mergesort por edad descendente
-                    pass
+                    pprint.pprint(mergesort_d(lista_estudiantes,"Edad"))
+                    
+                    system("pause")
+                    system("cls")
+                    menu()
                 else:
                     print("\n\nOpción inválida\n\n")
                     mergesort()
@@ -620,9 +781,17 @@ def mergesort():
                 opcion = int(input("Por favor ingrese una opción:"))
 
                 if opcion == 1:  # mergesort por ID ascendente
-                    pass
+                    pprint.pprint(mergesort_a(lista_estudiantes,"Id"))
+                    
+                    system("pause")
+                    system("cls")
+                    menu()
                 elif opcion == 2:  # mergesort por ID descendente
-                    pass
+                    pprint.pprint(mergesort_d(lista_estudiantes,"Id"))
+                    
+                    system("pause")
+                    system("cls")
+                    menu()
                 else:
                     print("\n\nOpción inválida\n\n")
                     mergesort()
@@ -654,9 +823,9 @@ def shellsort():
                 opcion = int(input("Por favor ingrese una opción:"))
 
                 if opcion == 1:  # shellsort por promedio ascendente
-                    pass
+                    shellsort_a(lista_estudiantes,"Promedio")
                 elif opcion == 2:  # shellsort por promedio descendente
-                    pass
+                    shellsort_d(lista_estudiantes,"Promedio")
                 else:
                     print("\n\nOpción inválida\n\n")
                     shellsort()
@@ -673,9 +842,9 @@ def shellsort():
                 opcion = int(input("Por favor ingrese una opción:"))
 
                 if opcion == 1:  # shellsort por edad ascendente
-                    pass
+                    shellsort_a(lista_estudiantes,"Edad")
                 elif opcion == 2:  # shellsort por edad descendente
-                    pass
+                    shellsort_d(lista_estudiantes,"Edad")
                 else:
                     print("\n\nOpción inválida\n\n")
                     shellsort()
@@ -692,9 +861,9 @@ def shellsort():
                 opcion = int(input("Por favor ingrese una opción:"))
 
                 if opcion == 1:  # shellsort por ID ascendente
-                    pass
+                    shellsort_a(lista_estudiantes,"Id")
                 elif opcion == 2:  # shellsort por ID descendente
-                    pass
+                    shellsort_d(lista_estudiantes,"Id")
                 else:
                     print("\n\nOpción inválida\n\n")
                     shellsort()
@@ -798,7 +967,11 @@ def radixsort():
                 opcion = int(input("Por favor ingrese una opción:"))
 
                 if opcion == 1:  # radixsort por promedio ascendente
-                    pass
+                    pprint.pprint(radixSort_a(lista_estudiantes,"Promedio"))
+                    
+                    system("pause")
+                    system("cls")
+                    menu()
                 elif opcion == 2:  # radixsort por promedio descendente
                     pass
                 else:
@@ -817,7 +990,11 @@ def radixsort():
                 opcion = int(input("Por favor ingrese una opción:"))
 
                 if opcion == 1:  # radixsort por edad ascendente
-                    pass
+                    pprint.pprint(radixSort_a(lista_estudiantes,"Edad"))
+                    
+                    system("pause")
+                    system("cls")
+                    menu()
                 elif opcion == 2:  # radixsort por edad descendente
                     pass
                 else:
@@ -836,7 +1013,11 @@ def radixsort():
                 opcion = int(input("Por favor ingrese una opción:"))
 
                 if opcion == 1:  # radixsort por ID ascendente
-                    pass
+                    pprint.pprint(radixSort_a(lista_estudiantes,"Id"))
+                    
+                    system("pause")
+                    system("cls")
+                    menu()
                 elif opcion == 2:  # radixsort por ID descendente
                     pass
                 else:
