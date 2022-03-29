@@ -22,7 +22,7 @@ def crear():
 
 def mostrar():
     for est in lista_estudiantes:
-        print("Nombre: ", est["1 Nombre"], "- Edad: ", est["2 Edad"], "- Genero: ",est["3 Genero"], "- Promedio: ", est["4 Promedio"], "- ID: ", est["5 Id"])
+        print("Nombre: ", est["1 Nombre"], "\t\t- Edad: ", est["2 Edad"], "\t\t- Genero: ",est["3 Genero"], "\t\t- Promedio: ", est["4 Promedio"], "\t\t- ID: ", est["5 Id"])
 
 
 def eliminar():
@@ -87,6 +87,40 @@ def ordenar():
     except ValueError:
         print("\n\nOpción inválida\n\n")
         ordenar()
+        
+#Declaración de menú de busqueda
+def buscar():
+    try:
+        print("\n**********Menú de Búsqueda*********")
+        print("Presione el número correspondiente según el método de búsqueda que desea implementar:\n\n1. Búsqueda secuencial con centinela.\n2. Búsqueda binaria.\n3. Regresar al menú principal.\n")
+        opcion = int(input("Por favor ingrese una opción:"))
+
+        if opcion == 1:
+            busquedaSecuencial()
+        elif opcion == 2:
+            while True:
+                num=int(input("indica un numero a buscar: "))
+                if num=="":
+                    break
+                try:
+                    num=int(num)
+                except:
+                    print("El valor tienes que ser numerico")
+                    continue
+                conseguido,iteraciones=busquedaBinaria(lista_estudiantes,"5 Id",num,0,len(lista_estudiantes),1)
+                if conseguido:
+                    print("Encontrado en {} iteraciones".format(iteraciones))
+                else:
+                    print("El valor introducido no se encuentra en la lista de valores. Se han necesitado {} iteraciones".format(iteraciones))
+        elif opcion == 3:
+            menu()
+        else:
+            print("\n\nOpción inválida\n\n")
+            buscar()
+
+    except ValueError:
+        print("\n\nOpción inválida\n\n")
+        buscar()
 
 # Burbuja ascendente
 def burbuja_a(lista, key):
@@ -157,15 +191,15 @@ def seleccion_d(lista, key):
     ordenar()
     
 #Incersión ascendente
-def insercion_a(lista,key):
-    tam= len(lista)
-    for i in range(1, tam):
-        cvalue = lista[i]
-        posicion = i
-        while posicion > 0 and lista[posicion-1][key] > lista[i][key]:
-            lista[posicion] = lista[posicion-1]
-            posicion-= 1
-        lista[posicion] = cvalue
+def insercion_a(Arreglo,key):
+    for i in range(1, len(Arreglo)):
+        copia_valor=Arreglo[i]
+        posicion=i
+        while (posicion>0) and (Arreglo[posicion-1][key] > copia_valor[key]):
+            Arreglo[posicion] = Arreglo[posicion-1]
+            Arreglo[posicion-1] = copia_valor
+            posicion=posicion-1
+        Arreglo[posicion]=copia_valor
     mostrar()
     system("pause")
     system("cls")
@@ -173,15 +207,15 @@ def insercion_a(lista,key):
 
 
 #Incersión descendente
-def insercion_d(lista,key):
-    tam= len(lista)
-    for i in range(1, tam):
-        cvalue = lista[i]
-        posicion = i
-        while posicion > 0 and lista[posicion-1][key] < lista[i][key]:
-            lista[posicion] = lista[posicion-1]
-            posicion-= 1
-        lista[posicion] = cvalue
+def insercion_d(Arreglo,key):
+    for i in range(1, len(Arreglo)):
+        copia_valor=Arreglo[i]
+        posicion=i
+        while (posicion>0) and (Arreglo[posicion-1][key] < copia_valor[key]):
+            Arreglo[posicion] = Arreglo[posicion-1]
+            Arreglo[posicion-1] = copia_valor
+            posicion=posicion-1
+        Arreglo[posicion]=copia_valor
     mostrar()
     system("pause")
     system("cls")
@@ -366,39 +400,6 @@ def radixSort_a(lista,key):
 
     return nueva_lista
 
-#Declaración de menú de busqueda
-def buscar():
-    try:
-        print("\n**********Menú de Búsqueda*********")
-        print("Presione el número correspondiente según el método de búsqueda que desea implementar:\n\n1. Búsqueda secuencial con centinela.\n2. Búsqueda binaria.\n3. Regresar al menú principal.\n")
-        opcion = int(input("Por favor ingrese una opción:"))
-
-        if opcion == 1:
-            busquedaSecuencial()
-        elif opcion == 2:
-            while True:
-                num=int(input("indica un numero a buscar: "))
-                if num=="":
-                    break
-                try:
-                    num=int(num)
-                except:
-                    print("El valor tienes que ser numerico")
-                    continue
-                conseguido,iteraciones=busquedaBinaria(lista_estudiantes,"5 Id",num,0,len(lista_estudiantes),1)
-                if conseguido:
-                    print("Encontrado en {} iteraciones".format(iteraciones))
-                else:
-                    print("El valor introducido no se encuentra en la lista de valores. Se han necesitado {} iteraciones".format(iteraciones))
-        elif opcion == 3:
-            menu()
-        else:
-            print("\n\nOpción inválida\n\n")
-            buscar()
-
-    except ValueError:
-        print("\n\nOpción inválida\n\n")
-        buscar()
 
 # Declaración de metodo de ordenamiento
 def burbuja():
@@ -1139,4 +1140,18 @@ def menu():
 
 
 print("******Bienvenido*******")
+estudiante={"1 Nombre": "Tencho Orizaba", "2 Edad": 56, "3 Genero": "M", "4 Promedio": 96, "5 Id": 1}
+lista_estudiantes.append(estudiante)
+
+estudiante={"1 Nombre": "Zacarias Flores", "2 Edad": 45, "3 Genero": "M", "4 Promedio": 86, "5 Id": 2}
+lista_estudiantes.append(estudiante)
+
+estudiante={"1 Nombre": "Armando Meza", "2 Edad":34, "3 Genero": "M", "4 Promedio":77, "5 Id": 3}
+lista_estudiantes.append(estudiante)
+
+estudiante={"1 Nombre": "Elza Pato", "2 Edad":25, "3 Genero": "F", "4 Promedio":64, "5 Id": 4}
+lista_estudiantes.append(estudiante)
+
+estudiante={"1 Nombre": "Teofilo", "2 Edad":78, "3 Genero": "M", "4 Promedio":49, "5 Id": 5}
+lista_estudiantes.append(estudiante)
 menu()
