@@ -1,11 +1,19 @@
 from os import system
 import pprint
 import sys
+
+#Andrea explica la estructura de la lista de diccionarios y el metodo mostrar
 lista_estudiantes = list()
 estudiante = {}
 contador_Id = 0
 
+def mostrar():
+    for est in lista_estudiantes:
+        print("Nombre: ", est["1 Nombre"], "\t\t- Edad: ", est["2 Edad"], "\t\t- Genero: ",est["3 Genero"], "\t\t- Promedio: ", est["4 Promedio"], "\t\t- ID: ", est["5 Id"])
+        
+#----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+#Bredant los metodos crear, eliminar y modificar
 def crear():
     estudiante = {}
     global contador_Id 
@@ -19,11 +27,6 @@ def crear():
     estudiante["5 Id"] = contador_Id
 
     lista_estudiantes.append(estudiante)
-
-
-def mostrar():
-    for est in lista_estudiantes:
-        print("Nombre: ", est["1 Nombre"], "\t\t- Edad: ", est["2 Edad"], "\t\t- Genero: ",est["3 Genero"], "\t\t- Promedio: ", est["4 Promedio"], "\t\t- ID: ", est["5 Id"])
 
 
 def eliminar():
@@ -55,8 +58,59 @@ def modificar():
     except ValueError:
         print("\n\nOpción inválida\n\n")
         modificar()
+        
+        
+#----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+#Giovanny explica la navegación en los menus
+def menu():
+    print("\n")
+    # system("pause")
+    # system("cls")
+    try:
 
+        print("\n\n**********Menú Principal*********")
+        print("Presione el número correspondiente según lo que desee hacer:\n\n1. Crear un registro.\n2. Eliminar un registro.\n3. Modificar un registro.\n4. Mostrar registros.\n5. Ordenar los registros.\n6. Buscar por ID.\n7. Salir del programa.")
+        opcion = int(input("\nPor favor ingrese una opción:"))
+
+        if opcion == 1:
+            crear()
+            menu()
+        elif opcion == 2:
+            print("\nLos registros actuales son:\n")
+            mostrar()
+            eliminar()
+            print(
+                "\nEliminado exitosamente\nLa lista actualizada se muestra a continuación: \n")
+            mostrar()
+            menu()
+        elif opcion == 3:
+            print("\nLos registros actuales son:\n")
+            mostrar()
+            modificar()
+            print("\nLa lista actualizada se muestra a continuación: \n")
+            mostrar()
+            menu()
+        elif opcion == 4:
+            print("\nLos registros actuales son:\n")
+            mostrar()
+            system("pause")
+            menu()
+        elif opcion == 5:
+            ordenar()
+        elif opcion == 6:
+            buscar()
+        elif opcion == 7:
+            print("\nSaliendo del programa...")
+            print(sys.exit())
+        else:
+            print("\n\nOpción inválida\n\n")
+            menu()
+    except ValueError:
+        print("\n\nOpción inválida\n\n")
+        menu()
+        
+#Menu de ordenamiento
 def ordenar():
     try:
         print("**********Menú de Ordenamiento*********")
@@ -82,51 +136,51 @@ def ordenar():
                 opcion_de_ordernado()
         elif opcion == 2: #seleccion
             key,orden = opcion_de_ordernado()
-            if key == 1 & orden == 1:  # Burbuja por promedio ascendente
+            if key == 1 & orden == 1:  # Seleccion por promedio ascendente
                 seleccion_a(lista_estudiantes, "4 Promedio")
-            elif key == 1 & orden == 2:  # Burbuja por promedio descendente
+            elif key == 1 & orden == 2:  # Seleccion por promedio descendente
                 seleccion_d(lista_estudiantes, "4 Promedio")
-            elif key == 2 & orden == 1:  # Burbuja por edad ascendente
+            elif key == 2 & orden == 1:  # Seleccion por edad ascendente
                 seleccion_a(lista_estudiantes, "2 Edad")
-            elif key == 2 & orden == 2:  # Burbuja por edad descendente
+            elif key == 2 & orden == 2:  # Seleccion por edad descendente
                 seleccion_d(lista_estudiantes, "2 Edad")
-            elif key == 3 & orden == 1:  # Burbuja por ID ascendente
+            elif key == 3 & orden == 1:  # Seleccion por ID ascendente
                 seleccion_a(lista_estudiantes, "5 Id")
-            elif key == 3 & orden == 2:  # Burbuja por ID descendente
+            elif key == 3 & orden == 2:  # Seleccion por ID descendente
                 seleccion_d(lista_estudiantes, "5 Id")
             else:
                 print("\n\nOpción inválida\n\n")
                 opcion_de_ordernado()
         elif opcion == 3:
             key,orden = opcion_de_ordernado()
-            if key == 1 & orden == 1:  # Burbuja por promedio ascendente
+            if key == 1 & orden == 1:  # Insercion por promedio ascendente
                 insercion_a(lista_estudiantes, "4 Promedio")
-            elif key == 1 & orden == 2:  # Burbuja por promedio descendente
+            elif key == 1 & orden == 2:  # Insercion por promedio descendente
                 insercion_d(lista_estudiantes, "4 Promedio")
-            elif key == 2 & orden == 1:  # Burbuja por edad ascendente
+            elif key == 2 & orden == 1:  # Insercion por edad ascendente
                 insercion_a(lista_estudiantes, "2 Edad")
-            elif key == 2 & orden == 2:  # Burbuja por edad descendente
+            elif key == 2 & orden == 2:  # Insercion por edad descendente
                 insercion_d(lista_estudiantes, "2 Edad")
-            elif key == 3 & orden == 1:  # Burbuja por ID ascendente
+            elif key == 3 & orden == 1:  # Insercion por ID ascendente
                 insercion_a(lista_estudiantes, "5 Id")
-            elif key == 3 & orden == 2:  # Burbuja por ID descendente
+            elif key == 3 & orden == 2:  # Insercion por ID descendente
                 insercion_d(lista_estudiantes, "5 Id")
             else:
                 print("\n\nOpción inválida\n\n")
                 opcion_de_ordernado()
         elif opcion == 4:
             key,orden = opcion_de_ordernado()
-            if key == 1 & orden == 1:  # Burbuja por promedio ascendente
+            if key == 1 & orden == 1:  #Quicksort por promedio ascendente
                 quicksort_a(lista_estudiantes, "4 Promedio")
-            elif key == 1 & orden == 2:  # Burbuja por promedio descendente
+            elif key == 1 & orden == 2:  #Quicksort por promedio descendente
                 quicksort_d(lista_estudiantes, "4 Promedio")
-            elif key == 2 & orden == 1:  # Burbuja por edad ascendente
+            elif key == 2 & orden == 1:  #Quicksort por edad ascendente
                 quicksort_a(lista_estudiantes, "2 Edad")
-            elif key == 2 & orden == 2:  # Burbuja por edad descendente
+            elif key == 2 & orden == 2:  #Quicksort por edad descendente
                 quicksort_d(lista_estudiantes, "2 Edad")
-            elif key == 3 & orden == 1:  # Burbuja por ID ascendente
+            elif key == 3 & orden == 1:  #Quicksort por ID ascendente
                 quicksort_a(lista_estudiantes, "5 Id")
-            elif key == 3 & orden == 2:  # Burbuja por ID descendente
+            elif key == 3 & orden == 2:  #Quicksort por ID descendente
                 quicksort_d(lista_estudiantes, "5 Id")
             else:
                 print("\n\nOpción inválida\n\n")
@@ -138,17 +192,17 @@ def ordenar():
             ordenar()
         elif opcion == 5:
             key,orden = opcion_de_ordernado()
-            if key == 1 & orden == 1:  # Burbuja por promedio ascendente
+            if key == 1 & orden == 1:  #Mergesort por promedio ascendente
                 mergesort_a(lista_estudiantes, "4 Promedio")
-            elif key == 1 & orden == 2:  # Burbuja por promedio descendente
+            elif key == 1 & orden == 2:  #Mergesort por promedio descendente
                 mergesort_d(lista_estudiantes, "4 Promedio")
-            elif key == 2 & orden == 1:  # Burbuja por edad ascendente
+            elif key == 2 & orden == 1:  #Mergesort por edad ascendente
                 mergesort_a(lista_estudiantes, "2 Edad")
-            elif key == 2 & orden == 2:  # Burbuja por edad descendente
+            elif key == 2 & orden == 2:  #Mergesort por edad descendente
                 mergesort_d(lista_estudiantes, "2 Edad")
-            elif key == 3 & orden == 1:  # Burbuja por ID ascendente
+            elif key == 3 & orden == 1:  #Mergesort por ID ascendente
                 mergesort_a(lista_estudiantes, "5 Id")
-            elif key == 3 & orden == 2:  # Burbuja por ID descendente
+            elif key == 3 & orden == 2:  #Mergesort por ID descendente
                 mergesort_d(lista_estudiantes, "5 Id")
             else:
                 print("\n\nOpción inválida\n\n")
@@ -160,17 +214,17 @@ def ordenar():
             ordenar()
         elif opcion == 6:
             key,orden = opcion_de_ordernado()
-            if key == 1 & orden == 1:  # Burbuja por promedio ascendente
+            if key == 1 & orden == 1:  #Shellsort por promedio ascendente
                 shellsort_a(lista_estudiantes, "4 Promedio")
-            elif key == 1 & orden == 2:  # Burbuja por promedio descendente
+            elif key == 1 & orden == 2:  #Shellsort por promedio descendente
                 shellsort_d(lista_estudiantes, "4 Promedio")
-            elif key == 2 & orden == 1:  # Burbuja por edad ascendente
+            elif key == 2 & orden == 1:  #Shellsort por edad ascendente
                 shellsort_a(lista_estudiantes, "2 Edad")
-            elif key == 2 & orden == 2:  # Burbuja por edad descendente
+            elif key == 2 & orden == 2:  #Shellsort por edad descendente
                 shellsort_d(lista_estudiantes, "2 Edad")
-            elif key == 3 & orden == 1:  # Burbuja por ID ascendente
+            elif key == 3 & orden == 1:  #Shellsort por ID ascendente
                 shellsort_a(lista_estudiantes, "5 Id")
-            elif key == 3 & orden == 2:  # Burbuja por ID descendente
+            elif key == 3 & orden == 2:  #Shellsort por ID descendente
                 shellsort_d(lista_estudiantes, "5 Id")
             else:
                 print("\n\nOpción inválida\n\n")
@@ -179,17 +233,17 @@ def ordenar():
             pass
         elif opcion == 8:
             key,orden = opcion_de_ordernado()
-            if key == 1 & orden == 1:  # Burbuja por promedio ascendente
+            if key == 1 & orden == 1:  #Radixsort por promedio ascendente
                 radixSort_a(lista_estudiantes, "4 Promedio")
-            elif key == 1 & orden == 2:  # Burbuja por promedio descendente
+            elif key == 1 & orden == 2:  #Radixsort por promedio descendente
                 radixSort_a(lista_estudiantes, "4 Promedio")
-            elif key == 2 & orden == 1:  # Burbuja por edad ascendente
+            elif key == 2 & orden == 1:  #Radixsort por edad ascendente
                 radixSort_a(lista_estudiantes, "2 Edad")
-            elif key == 2 & orden == 2:  # Burbuja por edad descendente
+            elif key == 2 & orden == 2:  #Radixsort por edad descendente
                 radixSort_a(lista_estudiantes, "2 Edad")
-            elif key == 3 & orden == 1:  # Burbuja por ID ascendente
+            elif key == 3 & orden == 1:  #Radixsort por ID ascendente
                 radixSort_a(lista_estudiantes, "5 Id")
-            elif key == 3 & orden == 2:  # Burbuja por ID descendente
+            elif key == 3 & orden == 2:  #Radixsort por ID descendente
                 radixSort_a(lista_estudiantes, "5 Id")
             else:
                 print("\n\nOpción inválida\n\n")
@@ -208,7 +262,7 @@ def ordenar():
     except ValueError:
         print("\n\nOpción inválida\n\n")
         ordenar()
-        
+
 #Declaración de menú de busqueda
 def buscar():
     try:
@@ -242,6 +296,44 @@ def buscar():
     except ValueError:
         print("\n\nOpción inválida\n\n")
         buscar()
+#----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#Vladimir explica los metodos de busqueda
+
+#Funcion de busqueda secuencial
+def busquedaSecuencial():
+    try:
+        num = int(input("\nIngrese el ID del elemento que desea buscar: "))
+        for est in lista_estudiantes:
+            if num == est["5 Id"]:
+                print("Nombre: ", est["1 Nombre"], "- Edad: ", est["2 Edad"], "- Genero: ",est["3 Genero"], "- Promedio: ", est["4 Promedio"], "- ID: ", est["5 Id"])
+            
+        system("pause")
+        buscar()
+    except IndexError:
+        print("\n\nNo existe registro con el ID ingresado\n\n")
+        system("pause")
+        buscar()
+    except ValueError:
+        print("\n\nOpción inválida\n\n")
+        system("pause")
+        buscar()
+
+#Funcion de busqueda binaria
+def busquedaBinaria(lista,key,num,inicio,fin,iteraciones):
+    centro=int((fin-inicio)/2)+inicio
+    if centro>len(lista)-1 or inicio>fin:
+        return (False,iteraciones)
+    if num>lista[centro][key]:
+        return busquedaBinaria(lista,key,num,centro+1,fin,iteraciones+1)
+    elif num<lista[centro][key]:
+        return busquedaBinaria(lista,key,num,inicio,centro-1,iteraciones+1)
+    else:
+        return (True,iteraciones)
+
+
+#----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#Nacho explica el protocolo de uso de los metodos de ordenamiento
+
 # Declaración de metodo de ordenamiento
 def opcion_de_ordernado():
     print("\n")
@@ -548,86 +640,6 @@ def radixSort_a(lista,key):
     return nueva_lista
 
 
-
-def busquedaSecuencial():
-    try:
-        num = int(input("\nIngrese el ID del elemento que desea buscar: "))
-        for est in lista_estudiantes:
-            if num == est["5 Id"]:
-                print("Nombre: ", est["1 Nombre"], "- Edad: ", est["2 Edad"], "- Genero: ",est["3 Genero"], "- Promedio: ", est["4 Promedio"], "- ID: ", est["5 Id"])
-            
-        system("pause")
-        buscar()
-    except IndexError:
-        print("\n\nNo existe registro con el ID ingresado\n\n")
-        system("pause")
-        buscar()
-    except ValueError:
-        print("\n\nOpción inválida\n\n")
-        system("pause")
-        buscar()
-
-
-def busquedaBinaria(lista,key,num,inicio,fin,iteraciones):
-    centro=int((fin-inicio)/2)+inicio
-    if centro>len(lista)-1 or inicio>fin:
-        return (False,iteraciones)
-    if num>lista[centro][key]:
-        return busquedaBinaria(lista,key,num,centro+1,fin,iteraciones+1)
-    elif num<lista[centro][key]:
-        return busquedaBinaria(lista,key,num,inicio,centro-1,iteraciones+1)
-    else:
-        return (True,iteraciones)
-    
-
-
-
-def menu():
-    print("\n")
-    # system("pause")
-    # system("cls")
-    try:
-
-        print("\n\n**********Menú Principal*********")
-        print("Presione el número correspondiente según lo que desee hacer:\n\n1. Crear un registro.\n2. Eliminar un registro.\n3. Modificar un registro.\n4. Mostrar registros.\n5. Ordenar los registros.\n6. Buscar por ID.\n7. Salir del programa.")
-        opcion = int(input("\nPor favor ingrese una opción:"))
-
-        if opcion == 1:
-            crear()
-            menu()
-        elif opcion == 2:
-            print("\nLos registros actuales son:\n")
-            mostrar()
-            eliminar()
-            print(
-                "\nEliminado exitosamente\nLa lista actualizada se muestra a continuación: \n")
-            mostrar()
-            menu()
-        elif opcion == 3:
-            print("\nLos registros actuales son:\n")
-            mostrar()
-            modificar()
-            print("\nLa lista actualizada se muestra a continuación: \n")
-            mostrar()
-            menu()
-        elif opcion == 4:
-            print("\nLos registros actuales son:\n")
-            mostrar()
-            system("pause")
-            menu()
-        elif opcion == 5:
-            ordenar()
-        elif opcion == 6:
-            buscar()
-        elif opcion == 7:
-            print("\nSaliendo del programa...")
-            print(sys.exit())
-        else:
-            print("\n\nOpción inválida\n\n")
-            menu()
-    except ValueError:
-        print("\n\nOpción inválida\n\n")
-        menu()
 
 
 print("******Bienvenido*******")
