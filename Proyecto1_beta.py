@@ -136,51 +136,51 @@ def ordenar():
                 opcion_de_ordernado()
         elif opcion == 2: #seleccion
             key,orden = opcion_de_ordernado()
-            if key == 1 & orden == 1:  # Seleccion por promedio ascendente
+            if key == 1 and orden == 1:  # Seleccion por promedio ascendente
                 seleccion_a(lista_estudiantes, "4 Promedio")
-            elif key == 1 & orden == 2:  # Seleccion por promedio descendente
+            elif key == 1 and orden == 2:  # Seleccion por promedio descendente
                 seleccion_d(lista_estudiantes, "4 Promedio")
-            elif key == 2 & orden == 1:  # Seleccion por edad ascendente
+            elif key == 2 and orden == 1:  # Seleccion por edad ascendente
                 seleccion_a(lista_estudiantes, "2 Edad")
-            elif key == 2 & orden == 2:  # Seleccion por edad descendente
+            elif key == 2 and orden == 2:  # Seleccion por edad descendente
                 seleccion_d(lista_estudiantes, "2 Edad")
-            elif key == 3 & orden == 1:  # Seleccion por ID ascendente
+            elif key == 3 and orden == 1:  # Seleccion por ID ascendente
                 seleccion_a(lista_estudiantes, "5 Id")
-            elif key == 3 & orden == 2:  # Seleccion por ID descendente
+            elif key == 3 and orden == 2:  # Seleccion por ID descendente
                 seleccion_d(lista_estudiantes, "5 Id")
             else:
                 print("\n\nOpción inválida\n\n")
                 opcion_de_ordernado()
-        elif opcion == 3:
+        elif opcion == 3: #inserción
             key,orden = opcion_de_ordernado()
-            if key == 1 & orden == 1:  # Insercion por promedio ascendente
+            if key == 1 and orden == 1:  # Insercion por promedio ascendente
                 insercion_a(lista_estudiantes, "4 Promedio")
-            elif key == 1 & orden == 2:  # Insercion por promedio descendente
+            elif key == 1 and orden == 2:  # Insercion por promedio descendente
                 insercion_d(lista_estudiantes, "4 Promedio")
-            elif key == 2 & orden == 1:  # Insercion por edad ascendente
+            elif key == 2 and orden == 1:  # Insercion por edad ascendente
                 insercion_a(lista_estudiantes, "2 Edad")
-            elif key == 2 & orden == 2:  # Insercion por edad descendente
+            elif key == 2 and orden == 2:  # Insercion por edad descendente
                 insercion_d(lista_estudiantes, "2 Edad")
-            elif key == 3 & orden == 1:  # Insercion por ID ascendente
+            elif key == 3 and orden == 1:  # Insercion por ID ascendente
                 insercion_a(lista_estudiantes, "5 Id")
-            elif key == 3 & orden == 2:  # Insercion por ID descendente
+            elif key == 3 and orden == 2:  # Insercion por ID descendente
                 insercion_d(lista_estudiantes, "5 Id")
             else:
                 print("\n\nOpción inválida\n\n")
                 opcion_de_ordernado()
-        elif opcion == 4:
+        elif opcion == 4: #Quicksort
             key,orden = opcion_de_ordernado()
-            if key == 1 & orden == 1:  #Quicksort por promedio ascendente
+            if key == 1 and orden == 1:  #Quicksort por promedio ascendente
                 quicksort_a(lista_estudiantes, "4 Promedio")
-            elif key == 1 & orden == 2:  #Quicksort por promedio descendente
+            elif key == 1 and orden == 2:  #Quicksort por promedio descendente
                 quicksort_d(lista_estudiantes, "4 Promedio")
-            elif key == 2 & orden == 1:  #Quicksort por edad ascendente
+            elif key == 2 and orden == 1:  #Quicksort por edad ascendente
                 quicksort_a(lista_estudiantes, "2 Edad")
-            elif key == 2 & orden == 2:  #Quicksort por edad descendente
+            elif key == 2 and orden == 2:  #Quicksort por edad descendente
                 quicksort_d(lista_estudiantes, "2 Edad")
-            elif key == 3 & orden == 1:  #Quicksort por ID ascendente
+            elif key == 3 and orden == 1:  #Quicksort por ID ascendente
                 quicksort_a(lista_estudiantes, "5 Id")
-            elif key == 3 & orden == 2:  #Quicksort por ID descendente
+            elif key == 3 and orden == 2:  #Quicksort por ID descendente
                 quicksort_d(lista_estudiantes, "5 Id")
             else:
                 print("\n\nOpción inválida\n\n")
@@ -190,19 +190,19 @@ def ordenar():
             system("pause")
             system("cls")
             ordenar()
-        elif opcion == 5:
+        elif opcion == 5: #merge
             key,orden = opcion_de_ordernado()
-            if key == 1 & orden == 1:  #Mergesort por promedio ascendente
+            if key == 1 and orden == 1:  #Mergesort por promedio ascendente
                 mergesort_a(lista_estudiantes, "4 Promedio")
-            elif key == 1 & orden == 2:  #Mergesort por promedio descendente
+            elif key == 1 and orden == 2:  #Mergesort por promedio descendente
                 mergesort_d(lista_estudiantes, "4 Promedio")
-            elif key == 2 & orden == 1:  #Mergesort por edad ascendente
+            elif key == 2 and orden == 1:  #Mergesort por edad ascendente
                 mergesort_a(lista_estudiantes, "2 Edad")
-            elif key == 2 & orden == 2:  #Mergesort por edad descendente
+            elif key == 2 and orden == 2:  #Mergesort por edad descendente
                 mergesort_d(lista_estudiantes, "2 Edad")
-            elif key == 3 & orden == 1:  #Mergesort por ID ascendente
+            elif key == 3 and orden == 1:  #Mergesort por ID ascendente
                 mergesort_a(lista_estudiantes, "5 Id")
-            elif key == 3 & orden == 2:  #Mergesort por ID descendente
+            elif key == 3 and orden == 2:  #Mergesort por ID descendente
                 mergesort_d(lista_estudiantes, "5 Id")
             else:
                 print("\n\nOpción inválida\n\n")
@@ -212,38 +212,53 @@ def ordenar():
             system("pause")
             system("cls")
             ordenar()
-        elif opcion == 6:
+        elif opcion == 6: #shell
             key,orden = opcion_de_ordernado()
-            if key == 1 & orden == 1:  #Shellsort por promedio ascendente
+            if key == 1 and orden == 1:  #Shellsort por promedio ascendente
                 shellsort_a(lista_estudiantes, "4 Promedio")
-            elif key == 1 & orden == 2:  #Shellsort por promedio descendente
+            elif key == 1 and orden == 2:  #Shellsort por promedio descendente
                 shellsort_d(lista_estudiantes, "4 Promedio")
-            elif key == 2 & orden == 1:  #Shellsort por edad ascendente
+            elif key == 2 and orden == 1:  #Shellsort por edad ascendente
                 shellsort_a(lista_estudiantes, "2 Edad")
-            elif key == 2 & orden == 2:  #Shellsort por edad descendente
+            elif key == 2 and orden == 2:  #Shellsort por edad descendente
                 shellsort_d(lista_estudiantes, "2 Edad")
-            elif key == 3 & orden == 1:  #Shellsort por ID ascendente
+            elif key == 3 and orden == 1:  #Shellsort por ID ascendente
                 shellsort_a(lista_estudiantes, "5 Id")
-            elif key == 3 & orden == 2:  #Shellsort por ID descendente
+            elif key == 3 and orden == 2:  #Shellsort por ID descendente
                 shellsort_d(lista_estudiantes, "5 Id")
             else:
                 print("\n\nOpción inválida\n\n")
                 opcion_de_ordernado()
-        elif opcion == 7:
-            pass
+        elif opcion == 7: #conteo
+            key,orden = opcion_de_ordernado()
+            if key == 1 and orden == 1:  # conteo por promedio ascendente
+                conteo_a(lista_estudiantes, "4 Promedio")
+            elif key == 1 and orden == 2:  # conteo por promedio descendente
+                conteo_d(lista_estudiantes, "4 Promedio")
+            elif key == 2 and orden == 1:  # conteo por edad ascendente
+                conteo_a(lista_estudiantes, "2 Edad")
+            elif key == 2 and orden == 2:  # Insercion por edad descendente
+                conteo_d(lista_estudiantes, "2 Edad")
+            elif key == 3 and orden == 1:  # conteo por ID ascendente
+                conteo_a(lista_estudiantes, "5 Id")
+            elif key == 3 and orden == 2:  # conteo por ID descendente
+                conteo_d(lista_estudiantes, "5 Id")
+            else:
+                print("\n\nOpción inválida\n\n")
+                opcion_de_ordernado()
         elif opcion == 8:
             key,orden = opcion_de_ordernado()
-            if key == 1 & orden == 1:  #Radixsort por promedio ascendente
+            if key == 1 and orden == 1:  #Radixsort por promedio ascendente
                 radixSort_a(lista_estudiantes, "4 Promedio")
-            elif key == 1 & orden == 2:  #Radixsort por promedio descendente
+            elif key == 1 and orden == 2:  #Radixsort por promedio descendente
                 radixSort_a(lista_estudiantes, "4 Promedio")
-            elif key == 2 & orden == 1:  #Radixsort por edad ascendente
+            elif key == 2 and orden == 1:  #Radixsort por edad ascendente
                 radixSort_a(lista_estudiantes, "2 Edad")
-            elif key == 2 & orden == 2:  #Radixsort por edad descendente
+            elif key == 2 and orden == 2:  #Radixsort por edad descendente
                 radixSort_a(lista_estudiantes, "2 Edad")
-            elif key == 3 & orden == 1:  #Radixsort por ID ascendente
+            elif key == 3 and orden == 1:  #Radixsort por ID ascendente
                 radixSort_a(lista_estudiantes, "5 Id")
-            elif key == 3 & orden == 2:  #Radixsort por ID descendente
+            elif key == 3 and orden == 2:  #Radixsort por ID descendente
                 radixSort_a(lista_estudiantes, "5 Id")
             else:
                 print("\n\nOpción inválida\n\n")
@@ -599,6 +614,56 @@ def mergesort_d(lista,key):
             j+=1
             k+=1
         return lista
+
+#conteo creciente
+
+def conteo_a(lista, key):
+  n= len(lista)
+  maximo = max(a)
+  c_arr = []
+  for x in range(0, maximo + 1):
+    c_arr.append(0)
+  for i in range (0, n):
+    c_arr[a[i]] = c_arr[a[i]] + 1
+  i = 0
+  j = 0
+  while i < maximo +1:
+    if c_arr[i] > 0:
+      a[j] = i
+      j+= 1
+      c_arr[i] = c_arr[i] - 1
+    else:
+      i+= 1
+  return a
+
+numeros = [3, 3, 5, 8, 2, 2, 1]
+
+print(conteo(numeros))
+
+#conteo decreciente
+
+def conteo_d(lista, key):
+  n= len(a)
+  maximo = max(a)
+  c_arr = []
+  for x in range(0, maximo + 1):
+    c_arr.append(0)
+  for i in range (0, n):
+    c_arr[a[i]] = c_arr[a[i]] + 1
+  i = maximo
+  j = 0
+  while i > 0:
+    if c_arr[i] > 0:
+      a[j] = i
+      j+= 1
+      c_arr[i] = c_arr[i] - 1
+    else:
+      i-= 1
+  return a
+
+numeros = [3, 3, 5, 8, 2, 2, 1]
+
+print(conteo(numeros))
     
 #Función de apoyo para radixsort
 def countingSortForRadix(lista, placeValue,key):
@@ -646,22 +711,65 @@ def radixSort_a(lista,key):
 
     return nueva_lista
 
+#Función de apoyo para radixsort
+def countingSortForRadix(lista, placeValue,key):
+    countArray = [0] * 10
+    tamano = len(lista)
+    
+    for i in range(tamano): 
+        placeElement = (lista[i][key] // placeValue) % 10
+        countArray[placeElement] += 1
 
+    for i in range(1, 10):
+        countArray[i] += countArray[i-1]
+
+    nueva_lista = [0] * tamano
+    i = tamano - 1
+    while i >= 0:
+        currentEl = lista[i]
+        placeElement = (lista[i][key] // placeValue) % 10
+        countArray[placeElement] -= 1
+        newPosition = countArray[placeElement]
+        nueva_lista[newPosition] = currentEl
+        i -= 1
+        
+    return nueva_lista
+
+def radixSort_d(lista, key):
+    maximo=0
+    for elemento in lista:
+        if elemento[key] > maximo:
+            maximo = elemento[key]
+    D = 1
+    while maximo > 0:
+        maximo /= 10
+        D += 1
+    
+    placeVal = 1
+
+    nueva_lista = lista
+    while D > 0:
+        nueva_lista = countingSortForRadix(nueva_lista, placeVal,key)
+        placeVal *= 10  
+        D -= 1
+    sorted = nueva_lista
+    sorted.reverse()
+    return sorted
 
 
 print("******Bienvenido*******")
-estudiante={"1 Nombre": "Tencho Orizaba", "2 Edad": 56, "3 Genero": "M", "4 Promedio": 96, "5 Id": 1}
+estudiante={"1 Nombre": "Manuel Medrano", "2 Edad": 56, "3 Genero": "M", "4 Promedio": 96, "5 Id": 1}
 lista_estudiantes.append(estudiante)
 
-estudiante={"1 Nombre": "Zacarias Flores", "2 Edad": 45, "3 Genero": "M", "4 Promedio": 86, "5 Id": 2}
+estudiante={"1 Nombre": "Leonel Castillo", "2 Edad": 45, "3 Genero": "M", "4 Promedio": 86, "5 Id": 2}
 lista_estudiantes.append(estudiante)
 
-estudiante={"1 Nombre": "Armando Meza", "2 Edad":34, "3 Genero": "M", "4 Promedio":77, "5 Id": 3}
+estudiante={"1 Nombre": "Jose Luís Guerrero", "2 Edad":34, "3 Genero": "M", "4 Promedio":77, "5 Id": 3}
 lista_estudiantes.append(estudiante)
 
-estudiante={"1 Nombre": "Elza Pato", "2 Edad":25, "3 Genero": "F", "4 Promedio":64, "5 Id": 4}
+estudiante={"1 Nombre": "Martín Andrade", "2 Edad":25, "3 Genero": "F", "4 Promedio":64, "5 Id": 4}
 lista_estudiantes.append(estudiante)
 
-estudiante={"1 Nombre": "Teofilo", "2 Edad":78, "3 Genero": "M", "4 Promedio":49, "5 Id": 5}
+estudiante={"1 Nombre": "Michael Jordan", "2 Edad":78, "3 Genero": "M", "4 Promedio":49, "5 Id": 5}
 lista_estudiantes.append(estudiante)
 menu()
