@@ -119,17 +119,17 @@ def ordenar():
 
         if opcion == 1: #burbuja
             key,orden = opcion_de_ordernado()
-            if key == 1 & orden == 1:  # Burbuja por promedio ascendente
+            if key == 1 and orden == 1:  # Burbuja por promedio ascendente
                 burbuja_a(lista_estudiantes, "4 Promedio")
-            elif key == 1 & orden == 2:  # Burbuja por promedio descendente
+            elif key == 1 and orden == 2:  # Burbuja por promedio descendente
                 burbuja_d(lista_estudiantes, "4 Promedio")
-            elif key == 2 & orden == 1:  # Burbuja por edad ascendente
+            elif key == 2 and orden == 1:  # Burbuja por edad ascendente
                 burbuja_a(lista_estudiantes, "2 Edad")
-            elif key == 2 & orden == 2:  # Burbuja por edad descendente
+            elif key == 2 and orden == 2:  # Burbuja por edad descendente
                 burbuja_d(lista_estudiantes, "2 Edad")
-            elif key == 3 & orden == 1:  # Burbuja por ID ascendente
+            elif key == 3 and orden == 1:  # Burbuja por ID ascendente
                 burbuja_a(lista_estudiantes, "5 Id")
-            elif key == 3 & orden == 2:  # Burbuja por ID descendente
+            elif key == 3 and orden == 2:  # Burbuja por ID descendente
                 burbuja_d(lista_estudiantes, "5 Id")
             else:
                 print("\n\nOpción inválida\n\n")
@@ -341,10 +341,15 @@ def opcion_de_ordernado():
     try:
         print("Presione el número correspondiente según el atributo al que desee implementar el método:\n\n1. Ordenar por promedio.\n2. Ordenar por edad.\n3. Ordenar por ID.\n4. Regresar al menu de ordenamiento.")
         opcion1 = int(input("Por favor ingrese una opción:"))
-        
+        if opcion1 == 4:
+            ordenar()
     except ValueError:
         print("\n\nOpción inválida\n\n")
         opcion_de_ordernado()
+    except IndexError:
+        print("\n\nNo existe registro con el ID ingresado\n\n")
+        system("pause")
+        buscar()
         
     print("\n")
     system("cls")
@@ -355,9 +360,11 @@ def opcion_de_ordernado():
     except ValueError:
         print("\n\nOpción inválida\n\n")
         opcion_de_ordernado()
+    except IndexError:
+        print("\n\nNo existe registro con el ID ingresado\n\n")
+        system("pause")
+        buscar()
 
-        if opcion1 == 4:
-            ordenar()
 
     return opcion1,opcion2
 
