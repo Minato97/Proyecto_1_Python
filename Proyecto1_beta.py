@@ -246,6 +246,11 @@ def ordenar():
             else:
                 print("\n\nOpción inválida\n\n")
                 opcion_de_ordernado()
+
+            pprint.pprint(quicksort_a(lista_estudiantes, "4 Promedio"))
+            system("pause")
+            system("cls")
+            ordenar()
         elif opcion == 8: #raidx
             key,orden = opcion_de_ordernado()
             if key == 1 and orden == 1:  #Radixsort por promedio ascendente
@@ -615,60 +620,53 @@ def mergesort_d(lista,key):
             k+=1
         return lista
 
-# #conteo creciente
-def conteo_a(lista, key):
-  maximo = 0
-  for y in range(len(lista)):
-    if lista[y][key] > maximo:
-      maximo = lista[y][key] 
-  maximo+= 1                                       # la variable maximo toma el valor máximo que se encuentra en la lista
-  conteo = [0] * maximo
-  
-  w = 0                                                 # la lista conteo se llena de 0 las veces que marque el valor maximo
-  while w < len(lista):                         #hacemos un conteo de las veces que aparece un número dentro de la lista
-    conteo[lista_estudiantes[w][key]] += 1
-    w+=1                                   #se agrega en la lista en orden uno a uno dentro de los elementos de la lista las veces que 
-                                            #va apareciendo ese número, en la primer iteración n vale 7, entonces en la posicion 7 de
-                                           #la lista se suma 1, así con todos los elementos dentro de la lista
-  i= 0
-
-  for j in range(len(lista)):                 #empezamos con j en un rango de 0 al valor maximo dentro de nuestra lista
-                                           #recorriendo los valores uno a uno dentro de la lista conteo 
-    for k in range(conteo[j]):
-      est = [x for x in lista_estudiantes if x[key] == j][0]            #el ciclo for anidado va desde 0 hasta el número de veces que apareció el 
-      lista[i] = est                                              #numero de veces que apareció (el valor que tiene en la lista conteo) y  
-      i+= 1                                #agregando j (si j vale 1 y aparece 1 vez de acuerdo a la lista conto) lo
-  return lista                              #reemplaza en la lista original en la posición actual de i que incrementa solo
-                                            #si se agrega un nuevo elemento a la lista
-
-# #conteo decreciente
-
-def conteo_d(lista, key):
+#conteo ascendente
+def conteo_a (lista, key):
     maximo = 0
     for y in range(len(lista)):
         if lista[y][key] > maximo:
-            maximo = lista[y][key] 
-    maximo+= 1                                       # la variable maximo toma el valor máximo que se encuentra en la lista
-    conteo = [0] * maximo
-    
-    w = 0                                                 # la lista conteo se llena de 0 las veces que marque el valor maximo
-    while w < len(lista):                         #hacemos un conteo de las veces que aparece un número dentro de la lista
-        conteo[lista_estudiantes[w][key]] += 1
-        w+=1                                   #se agrega en la lista en orden uno a uno dentro de los elementos de la lista las veces que#va apareciendo ese número, en la primer iteración n vale 7, entonces en la posicion 7 de
-                                            #la lista se suma 1, así con todos los elementos dentro de la lista
-    i= 0
+            maximo = lista[y][key]
+    maximo += 1
 
-    for j in range(len(lista)):                 #empezamos con j en un rango de 0 al valor maximo dentro de nuestra lista
-                                            #recorriendo los valores uno a uno dentro de la lista conteo 
-        for k in range(conteo[j]):
-            est = [x for x in lista_estudiantes if x[key] == j][0]            #el ciclo for anidado va desde 0 hasta el número de veces que apareció el 
-            lista[i] = est                                              #numero de veces que apareció (el valor que tiene en la lista conteo) y  
-            i+= 1
-    sorted = lista
-    sorted.reverse()                                #agregando j (si j vale 1 y aparece 1 vez de acuerdo a la lista conto) lo
-    return sorted                              #reemplaza en la lista original en la posición actual de i que incrementa solo
-                                            #si se agrega un nuevo elemento a la lista
-    
+    conteo= [0] * maximo
+    w = 0                                                 
+    while w < len(lista):                         
+        conteo[lista[w][key]] += 1
+        w+=1                                   
+
+    nueva_lista = []
+
+    for w in range(maximo):
+        if conteo[w] == 1:
+            est = list(filter(lambda item: item[key] == w, lista))
+            nueva_lista.append(est)
+    return nueva_lista
+
+#conteo descendente 
+def conteo_d (lista, key):
+    maximo = 0
+    for y in range(len(lista)):
+        if lista[y][key] > maximo:
+            maximo = lista_estudiantes[y][key]
+    maximo += 1
+
+    conteo= [0] * maximo
+    w = 0                                                 
+    while w < len(lista):                         
+        conteo[lista[w][key]] += 1
+        w+=1                                   
+
+    nueva_lista = []
+
+    for w in range(maximo):
+        if conteo[w] == 1:
+            est = list(filter(lambda item: item[key] == w, lista))
+            nueva_lista.append(est)
+
+    sorted= nueva_lista
+    sorted.reverse()
+    return sorted
+
 #Función de apoyo para radixsort
 def countingSortForRadix(lista, placeValue,key):
     countArray = [0] * 10
