@@ -388,17 +388,17 @@ def opcion_de_ordernado():
 
     return opcion1,opcion2
 
-# Burbuja ascendente
-def burbuja_a(lista, key):
-    tamano = len(lista)
+# Burbuja ascendente        
+def burbuja_a(lista, key):  
+    tamano = len(lista) 
     i = 0
-    while i < tamano:
+    while i < tamano:       # recorremos i de 0 hasta el tamaño -1
         j = 0
-        while j < (tamano-1):
-            if lista[j+1][key] < lista[j][key]:
-                bucket = lista[j]
-                lista[j] = lista[j+1]
-                lista[j+1] = bucket
+        while j < (tamano-1):                     # recorremos j de 0 hasta el tamaño -1 
+            if lista[j+1][key] < lista[j][key]:     # si el valor en la posición j+1 de la lista es menor al valor anterior
+                bucket = lista[j]                       # guardamos en una cubeta el valor anterior
+                lista[j] = lista[j+1]                   # reemplazamos el valor que guardamos en la cubeta por el que le sigue
+                lista[j+1] = bucket                     # colocamos en la posicion que sigue el valor que guardamos en la cubeta
             j += 1
         i += 1
     mostrar()
@@ -427,14 +427,14 @@ def burbuja_d(lista, key):
 #Selección ascendente
 def seleccion_a(lista, key):
     n = len(lista)
-    for i in range(0, n):
+    for i in range(0, n):                              # recorremos i desde 0 hasta el tamaño de la lista
         posicion = i
-        for j in range(0, n):
-            if lista[j][key] > lista[posicion][key]:
-                posicion = j
-                temp = lista[i]
-                lista[i] = lista[posicion]
-                lista[posicion] = temp
+        for j in range(0, n):                          # recorremos J desde 0 hasta el tamaño de la lista
+            if lista[j][key] > lista[posicion][key]:    # si el valor en la posición j es mayor al valor en la posición i (que no cambia hasta que llega a n)
+                posicion = j                                # la posición cambia su valor a j 
+                temp = lista[i]                             # guardamos en una variable temporal el valor de la lista en la posición i (si es la primera iteración)
+                lista[i] = lista[posicion]                  # entonces es el valor en la posición inical 
+                lista[posicion] = temp                      # intercambiamos el valor que encontró mayor al inicial y el que está en la variable temporal toma su lugar
     mostrar()
     system("pause")
     system("cls")
@@ -458,13 +458,13 @@ def seleccion_d(lista, key):
     
 #Incersión ascendente
 def insercion_a(Arreglo,key):
-    for i in range(1, len(Arreglo)):
-        copia_valor=Arreglo[i]
-        posicion=i
-        while (posicion>0) and (Arreglo[posicion-1][key] > copia_valor[key]):
-            Arreglo[posicion] = Arreglo[posicion-1]
-            Arreglo[posicion-1] = copia_valor
-            posicion=posicion-1
+    for i in range(1, len(Arreglo)):                                          #recorremos i de 1 hasta el tamaño de la lista
+        copia_valor=Arreglo[i]                                                #copiamos el primer valor de la lista en una variable
+        posicion=i                                                            #la variable posición toma el valor actual de i
+        while (posicion>0) and (Arreglo[posicion-1][key] > copia_valor[key]): #mientras que la variable posicion > 0 y el arreglo en la posición i-1 es mayor al valor que 
+            Arreglo[posicion] = Arreglo[posicion-1]                           # copiamos (el primer valor de la lista ([0])) 
+            Arreglo[posicion-1] = copia_valor                                   #intercambiamos los valores 
+            posicion=posicion-1                                                 #la variable posición se reduce en 1
         Arreglo[posicion]=copia_valor
     mostrar()
     system("pause")
@@ -488,9 +488,9 @@ def insercion_d(Arreglo,key):
     ordenar()
 
 #Función de apoyo para quicksort
-def particionado(lista,key):
-    menores = []
-    mayores = []
+def particionado(lista,key):             #El algoritmo Quick Sort consiste en elegir un elemento, llamado pivote y ordenar los 
+    menores = []                         #elementos de tal forma que todos los menores queden a la izquierda y todos los mayores a la
+    mayores = []                         #derecha, y a continuación ordenar de la misma forma cada una de las dos sublistas formadas.
     pivote = lista[0]
     for i in range(1,len(lista)):
         if lista[i][key] < pivote[key]:
@@ -522,18 +522,14 @@ def quicksort_d(lista,key):
 #Shellsort creciente
 def shellsort_a(lista,key):
     n = len(lista)
-    #print(n)
     for i in range(1, n):
-        valor = lista[i] #toma el siguiente valor a ser isnertado
-        #print("valor", nums[i])
-        posicion = i # indice  donde se insertará el vavlor
-        #print("posicion", posicion)
+        valor = lista[i]                    # toma el siguiente valor a ser isnertado
+        posicion = i                        # indice  donde se insertará el vavlor
 
         while posicion > 0 and lista[posicion -1][key] > valor[key]: #si la posicion es mayor a 0 Y los numeros en la posicion[posicion - 1] es mayor a el valor
-            lista[posicion] = lista[posicion -1] # numeros[posicion] = numeros[posicion - 1]
-            #print("valor cambiado", nums[posicion])
-            posicion -= 1 # posicion decrementa en 1
-            lista[posicion] = valor # numeros[posicion] = valor
+            lista[posicion] = lista[posicion -1]                     # numeros[posicion] = numeros[posicion - 1]
+            posicion -= 1                                            # posicion decrementa en 1
+            lista[posicion] = valor                                  # numeros[posicion] = valor
     mostrar()
     system("pause")
     system("cls")
@@ -542,27 +538,23 @@ def shellsort_a(lista,key):
 #Shellsort decreciente
 def shellsort_d(lista,key):
     n = len(lista)
-    #print(n)
     for i in range(1, n):
-        valor = lista[i] #toma el siguiente valor a ser isnertado
-        #print("valor", nums[i])
-        posicion = i # indice  donde se insertará el vavlor
-        #print("posicion", posicion)
+        valor = lista[i] 
+        posicion = i 
 
-        while posicion > 0 and lista[posicion -1][key] < valor[key]: #si la posicion es mayor a 0 Y los numeros en la posicion[posicion - 1] es mayor a el valor
-            lista[posicion] = lista[posicion -1] # numeros[posicion] = numeros[posicion - 1]
-            #print("valor cambiado", nums[posicion])
-            posicion -= 1 # posicion decrementa en 1
-            lista[posicion] = valor # numeros[posicion] = valor
+        while posicion > 0 and lista[posicion -1][key] < valor[key]:
+            lista[posicion] = lista[posicion -1] 
+            posicion -= 1 
+            lista[posicion] = valor
     mostrar()
     system("pause")
     system("cls")
     ordenar()
     
 #Mergesort Ascendente
-def mergesort_a(lista,key):
-    if len(lista) > 1:
-        mitad = len(lista) // 2
+def mergesort_a(lista,key):                     #La idea de los algoritmos de ordenación por mezcla es dividir la matriz 
+    if len(lista) > 1:                          #por la mitad una y otra vez hasta que cada pieza tenga solo un elemento de 
+        mitad = len(lista) // 2                 #longitud. Luego esos elementos se vuelven a juntar (mezclados) en orden de clasificación.
         primera_mitad = lista[:mitad]
         segunda_mitad = lista[mitad:]
 
@@ -624,21 +616,21 @@ def mergesort_d(lista,key):
 def conteo_a (lista, key):
     maximo = 0
     for y in range(len(lista)):
-        if lista[y][key] > maximo:
+        if lista[y][key] > maximo:      #sacamos el mayor valor de la lista
             maximo = lista[y][key]
     maximo += 1
 
-    conteo= [0] * maximo
+    conteo= [0] * maximo               #creamos una lista llena de ceros dependiendo el número que nos haya proporcionado el mayor
     w = 0                                                 
     while w < len(lista):                         
-        conteo[lista[w][key]] += 1
-        w+=1                                   
-
+        conteo[lista[w][key]] += 1     #contamos el número de veces que aparece un número en la lista original, en la posición que nos marca ese valor
+        w+=1                           #vamos a colocar el número de apariciones (si el número 2 aparece 3 veces en la lista, en la posición 2 de la lista de ceros
+                                        #se le sumará 3 porque aparece 3 veces, la lista de ceros queda como el conteo de veces que apareció ese número en la posición marcada)
     nueva_lista = []
 
-    for w in range(maximo):
-        if conteo[w] == 1:
-            est = list(filter(lambda item: item[key] == w, lista))
+    for w in range(maximo):                                        #recorremos con una variable de 0 hasta el núemro maximo que contiene nuestra lista y en las posiciones
+        if conteo[w] >= 1:                                          #donde haya apariciones insertará en la lista de salida en orden el valor en el que se encuentra nuestra
+            est = list(filter(lambda item: item[key] == w, lista))  #primer variable el número de veces que se supone aparece en la lista original desordenada
             nueva_lista.append(est)
     return nueva_lista
 
