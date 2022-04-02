@@ -64,7 +64,7 @@ def modificar():
 
 #Giovanny explica la navegación en los menus
 def menu():
-    print("\n")
+    
     # system("pause")
     # system("cls")
     try:
@@ -171,38 +171,38 @@ def ordenar():
         elif opcion == 4: #Quicksort
             key,orden = opcion_de_ordernado()
             if key == 1 and orden == 1:  #Quicksort por promedio ascendente
-                quicksort_a(lista_estudiantes, "D)Promedio")
-                mostrar(lista_estudiantes)
+                mostrar(quicksort_a(lista_estudiantes, "D)Promedio"))
+                # mostrar(lista_estudiantes)
                 system("pause")
                 system("cls")
                 ordenar()
             elif key == 1 and orden == 2:  #Quicksort por promedio descendente
-                quicksort_d(lista_estudiantes, "D)Promedio")
-                mostrar(lista_estudiantes)
+                mostrar(quicksort_d(lista_estudiantes, "D)Promedio"))
+                # mostrar(lista_estudiantes)
                 system("pause")
                 system("cls")
                 ordenar()
             elif key == 2 and orden == 1:  #Quicksort por edad ascendente
-                quicksort_a(lista_estudiantes, "B)Edad")
-                mostrar(lista_estudiantes)
+                mostrar(quicksort_a(lista_estudiantes, "B)Edad"))
+                # mostrar(lista_estudiantes)
                 system("pause")
                 system("cls")
                 ordenar()
             elif key == 2 and orden == 2:  #Quicksort por edad descendente
-                quicksort_d(lista_estudiantes, "B)Edad")
-                mostrar(lista_estudiantes)
+                mostrar(quicksort_d(lista_estudiantes, "B)Edad"))
+                # mostrar(lista_estudiantes)
                 system("pause")
                 system("cls")
                 ordenar()
             elif key == 3 and orden == 1:  #Quicksort por ID ascendente
-                quicksort_a(lista_estudiantes, "E)Id")
-                mostrar(lista_estudiantes)
+                mostrar(quicksort_a(lista_estudiantes, "E)Id"))
+                # mostrar(lista_estudiantes)
                 system("pause")
                 system("cls")
                 ordenar()
             elif key == 3 and orden == 2:  #Quicksort por ID descendente
-                quicksort_d(lista_estudiantes, "E)Id")
-                mostrar(lista_estudiantes)
+                mostrar(quicksort_d(lista_estudiantes, "E)Id"))
+                # mostrar(lista_estudiantes)
                 system("pause")
                 system("cls")
                 ordenar()
@@ -212,38 +212,38 @@ def ordenar():
         elif opcion == 5: #merge
             key,orden = opcion_de_ordernado()
             if key == 1 and orden == 1:  #Mergesort por promedio ascendente
-                mergesort_a(lista_estudiantes, "D)Promedio")
-                mostrar(lista_estudiantes)
+                mostrar(mergesort_a(lista_estudiantes, "D)Promedio"))
+                # mostrar(lista_estudiantes)
                 system("pause")
                 system("cls")
                 ordenar()
             elif key == 1 and orden == 2:  #Mergesort por promedio descendente
-                mergesort_d(lista_estudiantes, "D)Promedio")
-                mostrar(lista_estudiantes)
+                mostrar(mergesort_d(lista_estudiantes, "D)Promedio"))
+                # mostrar(lista_estudiantes)
                 system("pause")
                 system("cls")
                 ordenar()
             elif key == 2 and orden == 1:  #Mergesort por edad ascendente
-                mergesort_a(lista_estudiantes, "B)Edad")
-                mostrar(lista_estudiantes)
+                mostrar(mergesort_a(lista_estudiantes, "B)Edad"))
+                # mostrar(lista_estudiantes)
                 system("pause")
                 system("cls")
                 ordenar()
             elif key == 2 and orden == 2:  #Mergesort por edad descendente
-                mergesort_d(lista_estudiantes, "B)Edad")
-                mostrar(lista_estudiantes)
+                mostrar(mergesort_d(lista_estudiantes, "B)Edad"))
+                # mostrar(lista_estudiantes)
                 system("pause")
                 system("cls")
                 ordenar()
             elif key == 3 and orden == 1:  #Mergesort por ID ascendente
-                mergesort_a(lista_estudiantes, "E)Id")
-                mostrar(lista_estudiantes)
+                mostrar(mergesort_a(lista_estudiantes, "E)Id"))
+                # mostrar(lista_estudiantes)
                 system("pause")
                 system("cls")
                 ordenar()
             elif key == 3 and orden == 2:  #Mergesort por ID descendente
-                mergesort_d(lista_estudiantes, "E)Id")
-                mostrar(lista_estudiantes)
+                mostrar(mergesort_d(lista_estudiantes, "E)Id"))
+                # mostrar(lista_estudiantes)
                 system("pause")
                 system("cls")
                 ordenar()
@@ -270,38 +270,38 @@ def ordenar():
         elif opcion == 7: #conteo
             key,orden = opcion_de_ordernado()
             if key == 1 and orden == 1:  # conteo por promedio ascendente
-                conteo_a(lista_estudiantes, "D)Promedio")
-                mostrar(lista_estudiantes)
+                pprint.pprint(conteo_a(lista_estudiantes, "D)Promedio"))
+                # mostrar(lista_estudiantes)
                 system("pause")
                 system("cls")
                 ordenar()
             elif key == 1 and orden == 2:  # conteo por promedio descendente
-                conteo_d(lista_estudiantes, "D)Promedio")
-                mostrar(lista_estudiantes)
+                pprint.pprint(conteo_d(lista_estudiantes, "D)Promedio"))
+                # mostrar(lista_estudiantes)
                 system("pause")
                 system("cls")
                 ordenar()
             elif key == 2 and orden == 1:  # conteo por edad ascendente
-                conteo_a(lista_estudiantes, "B)Edad")
-                mostrar(lista_estudiantes)
+                pprint.pprint(conteo_a(lista_estudiantes, "B)Edad"))
+                # mostrar(lista_estudiantes)
                 system("pause")
                 system("cls")
                 ordenar()
             elif key == 2 and orden == 2:  # Insercion por edad descendente
-                conteo_d(lista_estudiantes, "B)Edad")
-                mostrar(lista_estudiantes)
+                pprint.pprint(conteo_d(lista_estudiantes, "B)Edad"))
+                # mostrar(lista_estudiantes)
                 system("pause")
                 system("cls")
                 ordenar()
             elif key == 3 and orden == 1:  # conteo por ID ascendente
-                conteo_a(lista_estudiantes, "E)Id")
-                mostrar(lista_estudiantes)
+                pprint.pprint(conteo_a(lista_estudiantes, "E)Id"))
+                # mostrar(lista_estudiantes)
                 system("pause")
                 system("cls")
                 ordenar()
             elif key == 3 and orden == 2:  # conteo por ID descendente
-                conteo_d(lista_estudiantes, "E)Id")
-                mostrar(lista_estudiantes)
+                pprint.pprint(conteo_d(lista_estudiantes, "E)Id"))
+                # mostrar(lista_estudiantes)
                 system("pause")
                 system("cls")
                 ordenar()
@@ -357,8 +357,12 @@ def buscar():
                 conseguido,iteraciones=busquedaBinaria(lista_estudiantes,"E)Id",num,0,len(lista_estudiantes),1)
                 if conseguido:
                     print("Encontrado en {} iteraciones".format(iteraciones))
+                    buscar()
+                    system("pause")
                 else:
                     print("El valor introducido no se encuentra en la lista de valores. Se han necesitado {} iteraciones".format(iteraciones))
+                    system("pause")
+                    buscar()
         elif opcion == 3:
             menu()
         else:
@@ -581,7 +585,9 @@ def quicksort_d(lista,key):
         return lista
     else:
         menores,pivote,mayores = particionado(lista,key)
-        lista=quicksort_d(mayores,key) + [pivote] + quicksort_d(menores,key)
+        mayores=quicksort_d(mayores,key)
+        menores=quicksort_d(menores,key)
+        lista=mayores + [pivote] + menores
         return lista
 
 #Shellsort creciente
@@ -797,6 +803,7 @@ def radixSort_d(lista, key):
 
 
 print("******Bienvenido*******")
+system("pause")
 estudiante={"A)Nombre": "Manuel Medrano", "B)Edad": 56, "C)Genero": "M", "D)Promedio": 96, "E)Id": 1}
 lista_estudiantes.append(estudiante)
 
