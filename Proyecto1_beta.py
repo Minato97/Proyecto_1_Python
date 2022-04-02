@@ -7,9 +7,9 @@ lista_estudiantes = list()
 estudiante = {}
 contador_Id = 0
 
-def mostrar():
-    for est in lista_estudiantes:
-        print("Nombre: ", est["1 Nombre"], "\t\t- Edad: ", est["2 Edad"], "\t\t- Genero: ",est["3 Genero"], "\t\t- Promedio: ", est["4 Promedio"], "\t\t- ID: ", est["5 Id"])
+def mostrar(lista):
+    for est in lista:
+        print("Nombre: ", est["A)Nombre"], "- Edad: ", est["B)Edad"], "- Genero: ",est["C)Genero"], "- Promedio: ", est["D)Promedio"], "- ID: ", est["E)Id"])
         
 #----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -19,12 +19,12 @@ def crear():
     global contador_Id 
     contador_Id += 1 
     #Id = len(lista_estudiantes)
-    estudiante["1 Nombre"] = input("Nombre: ")
-    estudiante["2 Edad"] = int(input("Edad: "))
-    estudiante["3 Genero"] = input("Genero: ")
-    estudiante["4 Promedio"] = int(input("Promedio: "))
+    estudiante["A)Nombre"] = input("Nombre: ")
+    estudiante["B)Edad"] = int(input("Edad: "))
+    estudiante["C)Genero"] = input("Genero: ")
+    estudiante["D)Promedio"] = int(input("Promedio: "))
     #Id += 1
-    estudiante["5 Id"] = contador_Id
+    estudiante["E)Id"] = contador_Id
 
     lista_estudiantes.append(estudiante)
 
@@ -45,11 +45,11 @@ def modificar():
     try:
         elemento = int(input("Ingrese el ID del elemento que desea modificar: "))
 
-        estudiante["1 Nombre"] = input("Nombre: ")
-        estudiante["2 Edad"] = int(input("Edad: "))
-        estudiante["3 Genero"] = input("Genero: ")
-        estudiante["4 Promedio"] = int(input("Promedio: "))
-        estudiante["5 Id"] = elemento
+        estudiante["A)Nombre"] = input("Nombre: ")
+        estudiante["B)Edad"] = int(input("Edad: "))
+        estudiante["C)Genero"] = input("Genero: ")
+        estudiante["D)Promedio"] = int(input("Promedio: "))
+        estudiante["E)Id"] = elemento
         lista_estudiantes[elemento-1] = estudiante
 
     except IndexError:
@@ -78,22 +78,22 @@ def menu():
             menu()
         elif opcion == 2:
             print("\nLos registros actuales son:\n")
-            mostrar()
+            mostrar(lista_estudiantes)
             eliminar()
             print(
                 "\nEliminado exitosamente\nLa lista actualizada se muestra a continuación: \n")
-            mostrar()
+            mostrar(lista_estudiantes)
             menu()
         elif opcion == 3:
             print("\nLos registros actuales son:\n")
-            mostrar()
+            mostrar(lista_estudiantes)
             modificar()
             print("\nLa lista actualizada se muestra a continuación: \n")
-            mostrar()
+            mostrar(lista_estudiantes)
             menu()
         elif opcion == 4:
             print("\nLos registros actuales son:\n")
-            mostrar()
+            mostrar(lista_estudiantes)
             system("pause")
             menu()
         elif opcion == 5:
@@ -120,159 +120,211 @@ def ordenar():
         if opcion == 1: #burbuja
             key,orden = opcion_de_ordernado()
             if key == 1 and orden == 1:  # Burbuja por promedio ascendente
-                burbuja_a(lista_estudiantes, "4 Promedio")
+                burbuja_a(lista_estudiantes, "D)Promedio")
             elif key == 1 and orden == 2:  # Burbuja por promedio descendente
-                burbuja_d(lista_estudiantes, "4 Promedio")
+                burbuja_d(lista_estudiantes, "D)Promedio")
             elif key == 2 and orden == 1:  # Burbuja por edad ascendente
-                burbuja_a(lista_estudiantes, "2 Edad")
+                burbuja_a(lista_estudiantes, "B)Edad")
             elif key == 2 and orden == 2:  # Burbuja por edad descendente
-                burbuja_d(lista_estudiantes, "2 Edad")
+                burbuja_d(lista_estudiantes, "B)Edad")
             elif key == 3 and orden == 1:  # Burbuja por ID ascendente
-                burbuja_a(lista_estudiantes, "5 Id")
+                burbuja_a(lista_estudiantes, "E)Id")
             elif key == 3 and orden == 2:  # Burbuja por ID descendente
-                burbuja_d(lista_estudiantes, "5 Id")
+                burbuja_d(lista_estudiantes, "E)Id")
             else:
                 print("\n\nOpción inválida\n\n")
                 opcion_de_ordernado()
         elif opcion == 2: #seleccion
             key,orden = opcion_de_ordernado()
             if key == 1 and orden == 1:  # Seleccion por promedio ascendente
-                seleccion_a(lista_estudiantes, "4 Promedio")
+                seleccion_a(lista_estudiantes, "D)Promedio")
             elif key == 1 and orden == 2:  # Seleccion por promedio descendente
-                seleccion_d(lista_estudiantes, "4 Promedio")
+                seleccion_d(lista_estudiantes, "D)Promedio")
             elif key == 2 and orden == 1:  # Seleccion por edad ascendente
-                seleccion_a(lista_estudiantes, "2 Edad")
+                seleccion_a(lista_estudiantes, "B)Edad")
             elif key == 2 and orden == 2:  # Seleccion por edad descendente
-                seleccion_d(lista_estudiantes, "2 Edad")
+                seleccion_d(lista_estudiantes, "B)Edad")
             elif key == 3 and orden == 1:  # Seleccion por ID ascendente
-                seleccion_a(lista_estudiantes, "5 Id")
+                seleccion_a(lista_estudiantes, "E)Id")
             elif key == 3 and orden == 2:  # Seleccion por ID descendente
-                seleccion_d(lista_estudiantes, "5 Id")
+                seleccion_d(lista_estudiantes, "E)Id")
             else:
                 print("\n\nOpción inválida\n\n")
                 opcion_de_ordernado()
         elif opcion == 3: #inserción
             key,orden = opcion_de_ordernado()
             if key == 1 and orden == 1:  # Insercion por promedio ascendente
-                insercion_a(lista_estudiantes, "4 Promedio")
+                insercion_a(lista_estudiantes, "D)Promedio")
             elif key == 1 and orden == 2:  # Insercion por promedio descendente
-                insercion_d(lista_estudiantes, "4 Promedio")
+                insercion_d(lista_estudiantes, "D)Promedio")
             elif key == 2 and orden == 1:  # Insercion por edad ascendente
-                insercion_a(lista_estudiantes, "2 Edad")
+                insercion_a(lista_estudiantes, "B)Edad")
             elif key == 2 and orden == 2:  # Insercion por edad descendente
-                insercion_d(lista_estudiantes, "2 Edad")
+                insercion_d(lista_estudiantes, "B)Edad")
             elif key == 3 and orden == 1:  # Insercion por ID ascendente
-                insercion_a(lista_estudiantes, "5 Id")
+                insercion_a(lista_estudiantes, "E)Id")
             elif key == 3 and orden == 2:  # Insercion por ID descendente
-                insercion_d(lista_estudiantes, "5 Id")
+                insercion_d(lista_estudiantes, "E)Id")
             else:
                 print("\n\nOpción inválida\n\n")
                 opcion_de_ordernado()
         elif opcion == 4: #Quicksort
             key,orden = opcion_de_ordernado()
             if key == 1 and orden == 1:  #Quicksort por promedio ascendente
-                quicksort_a(lista_estudiantes, "4 Promedio")
+                quicksort_a(lista_estudiantes, "D)Promedio")
+                mostrar(lista_estudiantes)
+                system("pause")
+                system("cls")
+                ordenar()
             elif key == 1 and orden == 2:  #Quicksort por promedio descendente
-                quicksort_d(lista_estudiantes, "4 Promedio")
+                quicksort_d(lista_estudiantes, "D)Promedio")
+                mostrar(lista_estudiantes)
+                system("pause")
+                system("cls")
+                ordenar()
             elif key == 2 and orden == 1:  #Quicksort por edad ascendente
-                quicksort_a(lista_estudiantes, "2 Edad")
+                quicksort_a(lista_estudiantes, "B)Edad")
+                mostrar(lista_estudiantes)
+                system("pause")
+                system("cls")
+                ordenar()
             elif key == 2 and orden == 2:  #Quicksort por edad descendente
-                quicksort_d(lista_estudiantes, "2 Edad")
+                quicksort_d(lista_estudiantes, "B)Edad")
+                mostrar(lista_estudiantes)
+                system("pause")
+                system("cls")
+                ordenar()
             elif key == 3 and orden == 1:  #Quicksort por ID ascendente
-                quicksort_a(lista_estudiantes, "5 Id")
+                quicksort_a(lista_estudiantes, "E)Id")
+                mostrar(lista_estudiantes)
+                system("pause")
+                system("cls")
+                ordenar()
             elif key == 3 and orden == 2:  #Quicksort por ID descendente
-                quicksort_d(lista_estudiantes, "5 Id")
+                quicksort_d(lista_estudiantes, "E)Id")
+                mostrar(lista_estudiantes)
+                system("pause")
+                system("cls")
+                ordenar()
             else:
                 print("\n\nOpción inválida\n\n")
                 opcion_de_ordernado()
-                
-            pprint.pprint(quicksort_a(lista_estudiantes,"4 Promedio"))
-            system("pause")
-            system("cls")
-            ordenar()
         elif opcion == 5: #merge
             key,orden = opcion_de_ordernado()
             if key == 1 and orden == 1:  #Mergesort por promedio ascendente
-                mergesort_a(lista_estudiantes, "4 Promedio")
+                mergesort_a(lista_estudiantes, "D)Promedio")
+                mostrar(lista_estudiantes)
+                system("pause")
+                system("cls")
+                ordenar()
             elif key == 1 and orden == 2:  #Mergesort por promedio descendente
-                mergesort_d(lista_estudiantes, "4 Promedio")
+                mergesort_d(lista_estudiantes, "D)Promedio")
+                mostrar(lista_estudiantes)
+                system("pause")
+                system("cls")
+                ordenar()
             elif key == 2 and orden == 1:  #Mergesort por edad ascendente
-                mergesort_a(lista_estudiantes, "2 Edad")
+                mergesort_a(lista_estudiantes, "B)Edad")
+                mostrar(lista_estudiantes)
+                system("pause")
+                system("cls")
+                ordenar()
             elif key == 2 and orden == 2:  #Mergesort por edad descendente
-                mergesort_d(lista_estudiantes, "2 Edad")
+                mergesort_d(lista_estudiantes, "B)Edad")
+                mostrar(lista_estudiantes)
+                system("pause")
+                system("cls")
+                ordenar()
             elif key == 3 and orden == 1:  #Mergesort por ID ascendente
-                mergesort_a(lista_estudiantes, "5 Id")
+                mergesort_a(lista_estudiantes, "E)Id")
+                mostrar(lista_estudiantes)
+                system("pause")
+                system("cls")
+                ordenar()
             elif key == 3 and orden == 2:  #Mergesort por ID descendente
-                mergesort_d(lista_estudiantes, "5 Id")
+                mergesort_d(lista_estudiantes, "E)Id")
+                mostrar(lista_estudiantes)
+                system("pause")
+                system("cls")
+                ordenar()
             else:
                 print("\n\nOpción inválida\n\n")
                 opcion_de_ordernado()
-                
-            pprint.pprint(quicksort_a(lista_estudiantes,"4 Promedio"))
-            system("pause")
-            system("cls")
-            ordenar()
         elif opcion == 6: #shell
             key,orden = opcion_de_ordernado()
             if key == 1 and orden == 1:  #Shellsort por promedio ascendente
-                shellsort_a(lista_estudiantes, "4 Promedio")
+                shellsort_a(lista_estudiantes, "D)Promedio")
             elif key == 1 and orden == 2:  #Shellsort por promedio descendente
-                shellsort_d(lista_estudiantes, "4 Promedio")
+                shellsort_d(lista_estudiantes, "D)Promedio")
             elif key == 2 and orden == 1:  #Shellsort por edad ascendente
-                shellsort_a(lista_estudiantes, "2 Edad")
+                shellsort_a(lista_estudiantes, "B)Edad")
             elif key == 2 and orden == 2:  #Shellsort por edad descendente
-                shellsort_d(lista_estudiantes, "2 Edad")
+                shellsort_d(lista_estudiantes, "B)Edad")
             elif key == 3 and orden == 1:  #Shellsort por ID ascendente
-                shellsort_a(lista_estudiantes, "5 Id")
+                shellsort_a(lista_estudiantes, "E)Id")
             elif key == 3 and orden == 2:  #Shellsort por ID descendente
-                shellsort_d(lista_estudiantes, "5 Id")
+                shellsort_d(lista_estudiantes, "E)Id")
             else:
                 print("\n\nOpción inválida\n\n")
                 opcion_de_ordernado()
         elif opcion == 7: #conteo
             key,orden = opcion_de_ordernado()
             if key == 1 and orden == 1:  # conteo por promedio ascendente
-                conteo_a(lista_estudiantes, "4 Promedio")
+                conteo_a(lista_estudiantes, "D)Promedio")
+                mostrar(lista_estudiantes)
+                system("pause")
+                system("cls")
+                ordenar()
             elif key == 1 and orden == 2:  # conteo por promedio descendente
-                conteo_d(lista_estudiantes, "4 Promedio")
+                conteo_d(lista_estudiantes, "D)Promedio")
+                mostrar(lista_estudiantes)
+                system("pause")
+                system("cls")
+                ordenar()
             elif key == 2 and orden == 1:  # conteo por edad ascendente
-                conteo_a(lista_estudiantes, "2 Edad")
+                conteo_a(lista_estudiantes, "B)Edad")
+                mostrar(lista_estudiantes)
+                system("pause")
+                system("cls")
+                ordenar()
             elif key == 2 and orden == 2:  # Insercion por edad descendente
-                conteo_d(lista_estudiantes, "2 Edad")
+                conteo_d(lista_estudiantes, "B)Edad")
+                mostrar(lista_estudiantes)
+                system("pause")
+                system("cls")
+                ordenar()
             elif key == 3 and orden == 1:  # conteo por ID ascendente
-                conteo_a(lista_estudiantes, "5 Id")
+                conteo_a(lista_estudiantes, "E)Id")
+                mostrar(lista_estudiantes)
+                system("pause")
+                system("cls")
+                ordenar()
             elif key == 3 and orden == 2:  # conteo por ID descendente
-                conteo_d(lista_estudiantes, "5 Id")
+                conteo_d(lista_estudiantes, "E)Id")
+                mostrar(lista_estudiantes)
+                system("pause")
+                system("cls")
+                ordenar()
             else:
                 print("\n\nOpción inválida\n\n")
                 opcion_de_ordernado()
-
-            pprint.pprint(quicksort_a(lista_estudiantes, "4 Promedio"))
-            system("pause")
-            system("cls")
-            ordenar()
-        elif opcion == 8: #raidx
+        elif opcion == 8: #radix
             key,orden = opcion_de_ordernado()
             if key == 1 and orden == 1:  #Radixsort por promedio ascendente
-                radixSort_a(lista_estudiantes, "4 Promedio")
+                radixSort_a(lista_estudiantes, "D)Promedio")
             elif key == 1 and orden == 2:  #Radixsort por promedio descendente
-                radixSort_d(lista_estudiantes, "4 Promedio")
+                radixSort_d(lista_estudiantes, "D)Promedio")
             elif key == 2 and orden == 1:  #Radixsort por edad ascendente
-                radixSort_a(lista_estudiantes, "2 Edad")
+                radixSort_a(lista_estudiantes, "B)Edad")
             elif key == 2 and orden == 2:  #Radixsort por edad descendente
-                radixSort_d(lista_estudiantes, "2 Edad")
+                radixSort_d(lista_estudiantes, "B)Edad")
             elif key == 3 and orden == 1:  #Radixsort por ID ascendente
-                radixSort_a(lista_estudiantes, "5 Id")
+                radixSort_a(lista_estudiantes, "E)Id")
             elif key == 3 and orden == 2:  #Radixsort por ID descendente
-                radixSort_d(lista_estudiantes, "5 Id")
+                radixSort_d(lista_estudiantes, "E)Id")
             else:
                 print("\n\nOpción inválida\n\n")
                 opcion_de_ordernado()
-                
-            pprint.pprint(quicksort_a(lista_estudiantes,"4 Promedio"))
-            system("pause")
-            system("cls")
-            ordenar()
         elif opcion == 9:
             menu()
         else:
@@ -302,7 +354,7 @@ def buscar():
                 except:
                     print("El valor tienes que ser numerico")
                     continue
-                conseguido,iteraciones=busquedaBinaria(lista_estudiantes,"5 Id",num,0,len(lista_estudiantes),1)
+                conseguido,iteraciones=busquedaBinaria(lista_estudiantes,"E)Id",num,0,len(lista_estudiantes),1)
                 if conseguido:
                     print("Encontrado en {} iteraciones".format(iteraciones))
                 else:
@@ -324,8 +376,8 @@ def busquedaSecuencial():
     try:
         num = int(input("\nIngrese el ID del elemento que desea buscar: "))
         for est in lista_estudiantes:
-            if num == est["5 Id"]:
-                print("Nombre: ", est["1 Nombre"], "- Edad: ", est["2 Edad"], "- Genero: ",est["3 Genero"], "- Promedio: ", est["4 Promedio"], "- ID: ", est["5 Id"])
+            if num == est["E)Id"]:
+                print("Nombre: ", est["A)Nombre"], "- Edad: ", est["B)Edad"], "- Genero: ",est["C)Genero"], "- Promedio: ", est["D)Promedio"], "- ID: ", est["E)Id"])
             
         system("pause")
         buscar()
@@ -401,7 +453,7 @@ def burbuja_a(lista, key):
                 lista[j+1] = bucket                     # colocamos en la posicion que sigue el valor que guardamos en la cubeta
             j += 1
         i += 1
-    mostrar()
+    mostrar(lista)
     system("pause")
     system("cls")
     ordenar()
@@ -419,7 +471,7 @@ def burbuja_d(lista, key):
                 lista[j+1] = bucket
             j += 1
         i += 1
-    mostrar()
+    mostrar(lista)
     system("pause")
     system("cls")
     ordenar()
@@ -435,7 +487,7 @@ def seleccion_a(lista, key):
                 temp = lista[i]                             # guardamos en una variable temporal el valor de la lista en la posición i (si es la primera iteración)
                 lista[i] = lista[posicion]                  # entonces es el valor en la posición inical 
                 lista[posicion] = temp                      # intercambiamos el valor que encontró mayor al inicial y el que está en la variable temporal toma su lugar
-    mostrar()
+    mostrar(lista)
     system("pause")
     system("cls")
     ordenar()
@@ -451,7 +503,7 @@ def seleccion_d(lista, key):
                 temp = lista[i]
                 lista[i] = lista[posicion]
                 lista[posicion] = temp
-    mostrar()
+    mostrar(lista)
     system("pause")
     system("cls")
     ordenar()
@@ -466,7 +518,7 @@ def insercion_a(Arreglo,key):
             Arreglo[posicion-1] = copia_valor                                   #intercambiamos los valores 
             posicion=posicion-1                                                 #la variable posición se reduce en 1
         Arreglo[posicion]=copia_valor
-    mostrar()
+    mostrar(Arreglo)
     system("pause")
     system("cls")
     ordenar()
@@ -482,7 +534,7 @@ def insercion_d(Arreglo,key):
             Arreglo[posicion-1] = copia_valor
             posicion=posicion-1
         Arreglo[posicion]=copia_valor
-    mostrar()
+    mostrar(Arreglo)
     system("pause")
     system("cls")
     ordenar()
@@ -491,6 +543,19 @@ def insercion_d(Arreglo,key):
 def particionado(lista,key):             #El algoritmo Quick Sort consiste en elegir un elemento, llamado pivote y ordenar los 
     menores = []                         #elementos de tal forma que todos los menores queden a la izquierda y todos los mayores a la
     mayores = []                         #derecha, y a continuación ordenar de la misma forma cada una de las dos sublistas formadas.
+    pivote = lista[0]
+    for i in range(1,len(lista)):
+        if lista[i][key] < pivote[key]:
+            menores.append(lista[i])
+        else:
+            mayores.append(lista[i])
+    return menores,pivote,mayores
+
+#Quicksort ascendente
+#Función de apoyo para quicksort
+def particionado(lista,key):
+    menores = []
+    mayores = []
     pivote = lista[0]
     for i in range(1,len(lista)):
         if lista[i][key] < pivote[key]:
@@ -530,7 +595,7 @@ def shellsort_a(lista,key):
             lista[posicion] = lista[posicion -1]                     # numeros[posicion] = numeros[posicion - 1]
             posicion -= 1                                            # posicion decrementa en 1
             lista[posicion] = valor                                  # numeros[posicion] = valor
-    mostrar()
+    mostrar(lista)
     system("pause")
     system("cls")
     ordenar()
@@ -546,7 +611,7 @@ def shellsort_d(lista,key):
             lista[posicion] = lista[posicion -1] 
             posicion -= 1 
             lista[posicion] = valor
-    mostrar()
+    mostrar(lista)
     system("pause")
     system("cls")
     ordenar()
@@ -633,7 +698,6 @@ def conteo_a (lista, key):
             est = list(filter(lambda item: item[key] == w, lista))  #primer variable el número de veces que se supone aparece en la lista original desordenada
             nueva_lista.append(est)
     return nueva_lista
-
 #conteo descendente 
 def conteo_d (lista, key):
     maximo = 0
@@ -655,33 +719,9 @@ def conteo_d (lista, key):
             est = list(filter(lambda item: item[key] == w, lista))
             nueva_lista.append(est)
 
-    sorted= nueva_lista
-    sorted.reverse()
-    return sorted
-
-#Función de apoyo para radixsort
-def countingSortForRadix(lista, placeValue,key):
-    countArray = [0] * 10
-    tamano = len(lista)
-    
-    for i in range(tamano): 
-        placeElement = (lista[i][key] // placeValue) % 10
-        countArray[placeElement] += 1
-
-    for i in range(1, 10):
-        countArray[i] += countArray[i-1]
-
-    nueva_lista = [0] * tamano
-    i = tamano - 1
-    while i >= 0:
-        currentEl = lista[i]
-        placeElement = (lista[i][key] // placeValue) % 10
-        countArray[placeElement] -= 1
-        newPosition = countArray[placeElement]
-        nueva_lista[newPosition] = currentEl
-        i -= 1
-        
-    return nueva_lista
+    lista= nueva_lista
+    lista.reverse()
+    return lista
 
 #Rdixsort ascendente
 def radixSort_a(lista,key):
@@ -703,8 +743,10 @@ def radixSort_a(lista,key):
         placeVal *= 10  
         D -= 1
 
-    return nueva_lista
-
+    mostrar(nueva_lista)
+    system("pause")
+    system("cls")
+    ordenar()
 #Función de apoyo para radixsort decreciente
 def countingSortForRadix(lista, placeValue,key):
     countArray = [0] * 10
@@ -746,24 +788,27 @@ def radixSort_d(lista, key):
         nueva_lista = countingSortForRadix(nueva_lista, placeVal,key)
         placeVal *= 10  
         D -= 1
-    sorted = nueva_lista
-    sorted.reverse()
-    return sorted
+    lista = nueva_lista
+    lista.reverse()
+    mostrar(lista)
+    system("pause")
+    system("cls")
+    ordenar()
 
 
 print("******Bienvenido*******")
-estudiante={"1 Nombre": "Manuel Medrano", "2 Edad": 56, "3 Genero": "M", "4 Promedio": 96, "5 Id": 1}
+estudiante={"A)Nombre": "Manuel Medrano", "B)Edad": 56, "C)Genero": "M", "D)Promedio": 96, "E)Id": 1}
 lista_estudiantes.append(estudiante)
 
-estudiante={"1 Nombre": "Leonel Castillo", "2 Edad": 45, "3 Genero": "M", "4 Promedio": 86, "5 Id": 2}
+estudiante={"A)Nombre": "Leonel Castillo", "B)Edad": 45, "C)Genero": "M", "D)Promedio": 86, "E)Id": 2}
 lista_estudiantes.append(estudiante)
 
-estudiante={"1 Nombre": "Jose Luís Guerrero", "2 Edad":34, "3 Genero": "M", "4 Promedio":77, "5 Id": 3}
+estudiante={"A)Nombre": "Jose Luís Guerrero", "B)Edad":34, "C)Genero": "M", "D)Promedio":77, "E)Id": 3}
 lista_estudiantes.append(estudiante)
 
-estudiante={"1 Nombre": "Martín Andrade", "2 Edad":25, "3 Genero": "F", "4 Promedio":64, "5 Id": 4}
+estudiante={"A)Nombre": "Martín Andrade", "B)Edad":25, "C)Genero": "F", "D)Promedio":64, "E)Id": 4}
 lista_estudiantes.append(estudiante)
 
-estudiante={"1 Nombre": "Michael Jordan", "2 Edad":78, "3 Genero": "M", "4 Promedio":49, "5 Id": 5}
+estudiante={"A)Nombre": "Michael Jordan", "B)Edad":78, "C)Genero": "M", "D)Promedio":49, "E)Id": 5}
 lista_estudiantes.append(estudiante)
 menu()
